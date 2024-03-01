@@ -10,7 +10,7 @@ public class ArraysPlayWithArray {
         a[4] = 22;
         a[5] = 22;
 
-        for (int i=0; i<=100; i++) {
+        for (int i=0; i<50; i++) {
             System.out.print(a[i]+",");
         }
     }

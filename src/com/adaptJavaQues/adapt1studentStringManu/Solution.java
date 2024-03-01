@@ -10,10 +10,10 @@ public class Solution {
         String sa = s.getStudentSection(st);
         System.out.println(sa);
 
-        String str2 = "SatyamSahu@IT64-OCT#9";
-        Student st2 = s.getStudentInfo(str);
-        String sa2 = s.getStudentSection(st);
-        System.out.println(sa2);
+//        String str2 = "SatyamSahu@1PC16IT64-OCT#9";
+//        Student st2 = s.getStudentInfo(str2);
+//        String sa2 = s.getStudentSection(st2);
+//        System.out.println(sa2);
 
     }
 }

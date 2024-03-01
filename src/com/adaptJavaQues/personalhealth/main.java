@@ -10,10 +10,10 @@ public class main {
 	
 	static float Temperature=25;
 	static float Weight=0;
-	static float Distance=0.0f;
+	static float Distance = 0.0f;
 	static String Watch;
 	static String Date;
-	static String Curr_mode="Mode1";
+	static String Curr_mode = "Mode1";
 	
 //MAIN CLASS----------------------------------------	
 	
