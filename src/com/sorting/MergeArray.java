@@ -27,17 +27,17 @@ public class MergeArray {
 			k++;
 		}
 
-		while(j<arr.length) {
+		while(j<brr.length) {
 			a[k] = brr[j];
-			i++;
+			j++;
 			k++;
 		}
 		return a;
 	}
 
 	public static void main(String[] args) {
-		int arr[] = {1,5,9};
-		int brr[] = {2,3,8};
+		int arr[] = {0,0};
+		int brr[] = {0,0};
 
 		int[] a = mergeArray(arr, brr);
 
@@ -45,6 +45,20 @@ public class MergeArray {
 			System.out.print(r + " ");
 		}
 		
+//		Double d = findMedianOfNewArray(a);
+//		System.out.println("d = " + d);
 	}
+
+//	public static Double findMedianOfNewArray(int[] x) {
+//
+//        if (x.length%2 == 0) {
+//			if (x[(x.length/2)-1]+ x[(x.length/2)] == 0) {
+//				return (double) 0;
+//			}
+//            return (x[(x.length/2)-1]+ x[(x.length/2)])/2.0;
+//
+//        }
+//		return (double) x[x.length/2];
+//	}
 
 }
