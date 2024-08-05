@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.mathematics;
 
 public class Solution {
 
