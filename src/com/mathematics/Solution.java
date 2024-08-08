@@ -115,8 +115,9 @@ public class Solution {
 
 	public static void main(String[] args) {
 
-		int n = takeInput();
-		switch (n) {
+		int input = takeInput();
+		int n = 123456;
+		switch (input) {
 
 			case 1:
 				//count
