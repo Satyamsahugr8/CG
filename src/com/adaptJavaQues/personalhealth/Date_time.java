@@ -9,7 +9,7 @@ public class Date_time {
 	
 	//METHOD FOR DESPLAYING DATE ACCORDING TO SYSTEM------------------------------------- 
 	public void mode_Date(String pattern) {
-		Locale local=new Locale("en",pattern);
+		Locale local = new Locale("en",pattern);
 		DateFormat dateformat=DateFormat.getDateInstance(DateFormat.DEFAULT,local);
 		String date=dateformat.format(new Date());
 		main.Date=date;	
