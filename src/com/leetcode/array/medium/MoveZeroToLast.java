@@ -2,11 +2,10 @@ package com.leetcode.array.medium;
 
 public class MoveZeroToLast {
     public static void main(String[] args) {
-        int arr[] = {1,0,4,6,0,2,43};
+        int[] arr = {1,0,4,6,0,2,43};
         moveZeroToEnd(arr);
 
-        for (int a:
-             arr) {
+        for (int a: arr) {
             System.out.print(a+" ");
         }
     }
