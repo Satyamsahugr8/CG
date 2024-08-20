@@ -4,9 +4,8 @@ public class ReverseArray {
 
 	public static void main(String[] args) {
 
-		int A[] = { 1, 2, 4, 5, 6, 8, 12, 15 };
-		
-		reverseArrays(A);
+		int[] A = { 1, 2, 4, 5, 6, 8, 12, 15 };
+		int[] rev = reverseArrays(A);
 		
 		for (int i : reverseArrays(A)) {
 			System.out.print(i + ",");
@@ -17,11 +16,9 @@ public class ReverseArray {
 	private static int[] reverseArrays(int A[]) {
 		
 		int[] reverseArray = new int[A.length];
-
 		for (int i = 0; i < A.length; i++) {
 			reverseArray[A.length - (1+i)] = A[i];
 		}
-		
 		return reverseArray;
 	}
 
