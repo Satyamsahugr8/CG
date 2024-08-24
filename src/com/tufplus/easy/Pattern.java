@@ -1,6 +1,7 @@
 package com.tufplus.easy;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class Pattern {
 
@@ -25,8 +26,57 @@ public class Pattern {
 //        printDCBA(4);
 //        newPattern(9);
 //        primeNumber(36);
-
+        System.out.println(reverseString("Satyam"));
     }
+
+//    String
+    public static String reverseString(String s) {
+        //your code goes here
+        int i = 0;
+        int j = s.length() - 1;
+        String newString = "";
+        return Pattern.reverse(s, newString, j);
+    }
+
+    public static String reverse(String s, String newString, int j) {
+
+        if ( 0 >= j ) {
+            return newString + s.charAt(0);
+        }
+
+
+
+        char temp = s.charAt(j);
+        newString += temp;
+//        int[] nums = new int[0];
+//        int sum  = nums.length;
+
+        return reverse(s, newString, j - 1);
+    }
+
+
+//    Vector<Character>
+//    public static Vector<Character> reverseString(Vector<Character> s) {
+//        //your code goes here
+//        int i = 0;
+//        int j = s.size() - 1;
+//
+//        Pattern.reverse(s, i, j);
+//        return s;
+//    }
+//
+//    public static void reverse(Vector<Character> s, int i, int j) {
+//
+//        if ( i >= j ) {
+//            return;
+//        }
+//
+//        char temp = s.get(i);
+//        s.set(i, s.get(j));
+//        s.set(j, temp);
+//
+//        reverse(s, i + 1, j - 1);
+//    }
 
     public int[] divisors(int n) {
 
