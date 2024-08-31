@@ -5,11 +5,6 @@ import java.util.Scanner;
 public class LinkedClassUse {
 
     public static Node<Integer> createLinkedList() {
-    	
-//        Node<Integer> n4 = new Node<>(40);
-//        Node<Integer> n3 = new Node<>(30, n4);
-//        Node<Integer> n2 = new Node<>(20, n3);
-//        Node<Integer> n1 = new Node<>(10, n2);
 
         Node<Integer> n1 = new Node<>(10);
         Node<Integer> n2 = new Node<>(20);
@@ -19,6 +14,14 @@ public class LinkedClassUse {
         n2.next = n3;
         n3.next = n4;
         return n1;
+    }
+    
+    public static Node<Integer> createLinkedList2() {
+      Node<Integer> n4 = new Node<>(40);
+      Node<Integer> n3 = new Node<>(30, n4);
+      Node<Integer> n2 = new Node<>(20, n3);
+      Node<Integer> n1 = new Node<>(10, n2);
+      return n1;
     }
 
     public static Node<Integer> increment(Node<Integer> head) {
@@ -108,10 +111,21 @@ public class LinkedClassUse {
 //    }
     
 
-    public static void addElementAtIndex(Node<Integer> head, Integer item, Integer index) {
+    public static Node<Integer> addElementAtIndex(Node<Integer> head, Integer item, Integer index) {
         int count = 0;
+        int maximumCount = count(head);
         Node<Integer> temp = head;
         Node<Integer> itemToBeAdded = new Node<>(item);
+        
+        if (index == 0) {
+        	itemToBeAdded.next = head;
+        	head = itemToBeAdded;
+        	return head;
+        }
+        
+        if ( index > maximumCount ) {
+        	return head;
+        }
 
         while (count < index - 1) {
             count++;
@@ -120,10 +134,39 @@ public class LinkedClassUse {
 
         itemToBeAdded.next = temp.next;
         temp.next = itemToBeAdded;
-    }
-
-    public static void addElementAtIndex2(Node<Integer> head, Integer item, Integer index) {
         
+        return head;
+    }
+    
+    public static Node<Integer> addElementAtIndexEasy(Node<Integer> head, Integer item, Integer index) {
+        
+    	int count = 0;
+        Node<Integer> temp = head;
+        
+        if (head == null) {
+            if (index == 1)
+                return new Node<Integer>(item);
+            else
+                return head;
+        }
+
+        if (index == 1)
+            return new Node<Integer>(item, head);
+
+        while (temp != null) {
+            
+        	count++;
+            
+            if (count == index - 1) {
+                Node<Integer> newNode = new Node<Integer>(item, temp.next);
+                temp.next = newNode;
+                break;
+            }
+            
+            temp = temp.next;
+        }
+        
+        return head;
     }
     
     
@@ -167,17 +210,20 @@ public class LinkedClassUse {
 	}
 	
 	public static Node<Integer> deleteByValue( Node<Integer> head, int value) {
-		return head;
+		return delete(head, valuePosition(head, value));
 	}
 	
     public static Node<Integer> deleteHead(Node<Integer> head) {
     	
-    	Node temp = head;
     	head = head.next;
 //    	1 -> 2 -> 3
 //    	2 -> 3
 		return head;
     }
+    
+    public static Node<Integer> deleteTail(Node<Integer> head) {
+		return delete(head, 0);
+	}
 
     public static void main(String[] args) {
 
@@ -208,12 +254,15 @@ public class LinkedClassUse {
     	
     	
     	
-    	Node<Integer> head = createLinkedList();
+    	Node<Integer> head = createLinkedList2();
         print(head);
+//        Node<Integer> newHead = addElementAtIndexEasy(head, 55, valuePosition( head, 40));
+//        print(newHead);
+         
         
-        int pos = valuePosition(head, 40);
-        
-        System.out.println(pos); 
+//        int pos = valuePosition(head, 40);
+//        
+//        System.out.println(pos); 
         
     
       //delete tail
@@ -223,9 +272,5 @@ public class LinkedClassUse {
         
 
     }
-
-	private static Node<Integer> deleteTail(Node<Integer> head) {
-		// TODO Auto-generated method stub
-		return delete(head, 0);
-	}
+    
 }

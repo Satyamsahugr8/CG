@@ -1,6 +1,7 @@
 package com.tufplus.easy;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Vector;
 
 public class Pattern {
@@ -26,7 +27,22 @@ public class Pattern {
 //        printDCBA(4);
 //        newPattern(9);
 //        primeNumber(36);
-        System.out.println(reverseString("Satyam"));
+//        System.out.println(reverseString("Satyam"));
+//    	patternCode360(3);
+    	takeInputPrintPattern();
+    }
+    
+    static void takeInputPrintPattern() {
+    	Scanner sc = new Scanner(System.in);
+    	int input = sc.nextInt();
+    	int[] inputArray = new int[input];
+    	for (int i = 0; i < input; i++) {
+    		inputArray[i] = sc.nextInt();
+		}
+    	
+    	for (int i : inputArray) {
+    		patternCode360(i);
+		}
     }
 
 //    String
@@ -101,6 +117,31 @@ public class Pattern {
         }
 
         return ans;
+    }
+    
+    
+    static void patternCode360(int n) {
+    	
+    	int r = 1;
+    	
+    	for (int c = 1; c <= n; c++) {
+
+    	//space
+    	for (int i = c; i < n; i++) {
+			System.out.print(" ");
+		}
+    	
+    	// number
+    	for (int i = 1; i <= c; i++) {
+			System.out.print(r);
+			r++;
+			if ( r > 9 ) {
+				r = 1;
+			}
+		}
+    	System.out.println();
+    	
+    	}	
     }
 
     private static void primeNumber(int n) {
@@ -363,22 +404,22 @@ public class Pattern {
     }
 
     public static void sidePyramid(int n) {
-//        int h = 1;
-//        for (int i = 1; i < 2*n; i++) {
-//            if (i <= n) {
-//                //upper stars
-//                for (int j = 1; j <= i; j++) {
-//                    System.out.print("*");
-//                }
-//            } else {
-//                //lower stars
-//                for (int j = 1; j <= (i-(2*h)); j++) {
-//                    System.out.print("*");
-//                }
-//                h++;
-//            }
-//            System.out.println();
-//        }
+        int h = 1;
+        for (int i = 1; i < 2*n; i++) {
+            if (i <= n) {
+                //upper stars
+                for (int j = 1; j <= i; j++) {
+                    System.out.print("*");
+                }
+            } else {
+                //lower stars
+                for (int j = 1; j <= (i-(2*h)); j++) {
+                    System.out.print("*");
+                }
+                h++;
+            }
+            System.out.println();
+        }
 
     }
 

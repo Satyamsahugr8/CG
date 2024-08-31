@@ -1,5 +1,9 @@
 package com.tufplus.sorting;
 
+import com.leetcode.array.medium.MergeArray;
+import com.sorting.Mergesort;
+import com.sorting.QuickSort;
+
 public class Sorting {
 	
     public static int[] bubbleSort(int[] nums) {
@@ -61,10 +65,12 @@ public class Sorting {
     
     public static void quickSort(int[] nums) {
     	
+    	QuickSort.quickSort(nums);
     }
     
     public static void mergeSort(int[] nums) {
     	
+    	Mergesort.mergeSort(nums);
     }
         
         

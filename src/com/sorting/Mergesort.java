@@ -5,14 +5,11 @@ public class Mergesort {
     public static void mergeSort(int[] arr) {
     	
     	mergeSort(arr, 0, arr.length-1);
-    	
-//        for (int i = 0; i < arr.length; i++) {
-//            System.out.print(arr[i]+" ");
-//        }
     }
 
     private static void mergeSort(int[] arr, int si, int ei) {
-        if (si >= ei) {
+        
+    	if (si >= ei) {
             return;
         }
 
@@ -22,6 +19,7 @@ public class Mergesort {
         mergeSort(arr, si, mid);
         //second half
         mergeSort(arr, mid+1, ei);
+        //merge
         merge(arr, si,ei);
     }
 

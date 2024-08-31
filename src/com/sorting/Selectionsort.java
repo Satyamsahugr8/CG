@@ -3,6 +3,7 @@ package com.sorting;
 public class Selectionsort {
 
 	public static int[] sortArray(int[] nums) {
+		
 		for (int i = 0; i < nums.length - 1; i++) {
 			int mini = nums[i];
 			int minindex = i;
@@ -21,6 +22,7 @@ public class Selectionsort {
 		}
 		
 		return nums;
+		
 	}
 
 	public static void main(String[] args) {

@@ -2,11 +2,19 @@ package com.sorting;
 
 public class QuickSort {
     public static void main(String[] args) {
-        int[] arr = {763,533,2,1,2,32,21};
-        quickSort(arr, 0, arr.length-1);
+        
+    	int[] arr = {763,533,2,1,2,32,21};
+        
+        quickSort(arr);
+        
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i]+" ");
         }
+        
+    }
+    
+    public static void quickSort(int[] arr) {
+    	quickSort(arr, 0, arr.length-1);
     }
 
     private static void quickSort(int[] arr, int si, int ei) {
