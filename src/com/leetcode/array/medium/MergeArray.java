@@ -35,7 +35,9 @@ public class MergeArray {
 			j++;
 			k++;
 		}
+		
 		return a;
+		
 	}
 
 	public static void main(String[] args) {
