@@ -36,6 +36,7 @@ public class Pattern {
     	Scanner sc = new Scanner(System.in);
     	int input = sc.nextInt();
     	int[] inputArray = new int[input];
+    	
     	for (int i = 0; i < input; i++) {
     		inputArray[i] = sc.nextInt();
 		}

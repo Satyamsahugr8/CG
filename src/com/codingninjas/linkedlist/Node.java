@@ -1,4 +1,4 @@
-package com.leetcode.linkedlist.notes;
+package com.codingninjas.linkedlist;
 
 public class Node<T> {
     
