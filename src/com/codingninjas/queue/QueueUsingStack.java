@@ -2,8 +2,6 @@ package com.codingninjas.queue;
 
 import java.util.Stack;
 
-import com.codingninjas.stack.StackEmptyException;
-
 public class QueueUsingStack {
 
 	Stack<Integer> stack1 = new Stack<Integer>();
@@ -21,7 +19,7 @@ public class QueueUsingStack {
 		size++;
 	}
 	
-	public Integer deQueue() throws StackEmptyException {
+	public Integer deQueue() throws QueueEmptyException {
 		
 		if ( !stack1.isEmpty() ) {
 			
@@ -41,7 +39,7 @@ public class QueueUsingStack {
 			return store;
 		}
 		
-		throw new StackEmptyException();
+		throw new QueueEmptyException();
 		
 	}
 	
@@ -53,7 +51,7 @@ public class QueueUsingStack {
 		return size == 0;
 	}
 	
-	public Integer front() throws StackEmptyException {
+	public Integer front() throws QueueEmptyException {
 		
 		if ( !stack1.isEmpty() ) {
 			
@@ -64,7 +62,7 @@ public class QueueUsingStack {
 			return stack1.peek();
 		}
 		
-		throw new StackEmptyException();
+		throw new QueueEmptyException();
 	}
 
 	void printStack1() {

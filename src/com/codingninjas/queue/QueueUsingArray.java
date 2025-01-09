@@ -1,8 +1,5 @@
 package com.codingninjas.queue;
 
-import com.codingninjas.stack.StackEmptyException;
-import com.codingninjas.stack.StackFullException;
-
 public class QueueUsingArray {
 	
 	private int[] data;
@@ -51,7 +48,7 @@ public class QueueUsingArray {
 	}
 
 	
-	public void enQueue(int element) throws StackFullException {
+	public void enQueue(int element) throws QueueFullException {
 		if ( size == data.length ) {
 			doubleCapacity();
 		}
@@ -63,7 +60,7 @@ public class QueueUsingArray {
 		size++;
 	}
 	
-	public int deQueue() throws StackEmptyException {
+	public int deQueue() throws QueueEmptyException {
 		if ( !isEmpty() ) {
 			int temp = data[front];
 			data[front] = 0;
@@ -75,12 +72,12 @@ public class QueueUsingArray {
 			}
 			return temp;
 		}
-		throw new StackEmptyException();
+		throw new QueueEmptyException();
 	}
 	
-	public int front() throws StackEmptyException {
+	public int front() throws QueueEmptyException {
 		if ( !isEmpty()) return data[front];
-		throw new StackEmptyException();
+		throw new QueueEmptyException();
 	}
 	
 	public void print() {

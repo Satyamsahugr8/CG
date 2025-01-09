@@ -1,5 +1,4 @@
-package com.codingninjas.queue;
-
+package com.codingninjas.trees;
 
 public class QueueUsingLL<T> {
 
@@ -38,9 +37,9 @@ public class QueueUsingLL<T> {
 		
 	}
 	
-	public T front() throws QueueEmptyException {
+	public T front() throws StackEmptyException {
 		if ( size == 0 ) {
-			throw new QueueEmptyException();
+			throw new StackEmptyException();
 		}
 		return front.data;
 	}

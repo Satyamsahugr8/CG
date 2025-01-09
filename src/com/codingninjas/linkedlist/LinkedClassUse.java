@@ -16,6 +16,7 @@ class DoubleNode {
 	
 }
 
+@SuppressWarnings({"resource"})
 public class LinkedClassUse {
 
 	public static Node<Integer> createLinkedList() {
@@ -276,7 +277,7 @@ public class LinkedClassUse {
 		return delete(head, 0);
 	}
 	
-	private static void printRecursively(Node<Integer> head) {
+	public static void printRecursively(Node<Integer> head) {
 
 		if (head == null) {
 			System.out.print("null ");
@@ -287,7 +288,7 @@ public class LinkedClassUse {
 		printRecursively(head.next);
 	}
 
-	private static void printReverseNodeRecursively(Node<Integer> head) {
+	public static void printReverseNodeRecursively(Node<Integer> head) {
 
 		if (head == null) {
 			System.out.print("null ");
@@ -298,7 +299,7 @@ public class LinkedClassUse {
 		System.out.print(head.data + " ");
 	}
 
-	private static Node<Integer> insertionUsingRecursion(Node<Integer> head, Integer newNumber, Integer index) {
+	public static Node<Integer> insertionUsingRecursion(Node<Integer> head, Integer newNumber, Integer index) {
 
 		if (index == 0) {
 			Node<Integer> newNode = new Node<Integer>(newNumber);
@@ -315,7 +316,7 @@ public class LinkedClassUse {
 		return head;
 	}
 
-	private static Node<Integer> deletionUsingRecursion(Node<Integer> head, Integer index) {
+	public static Node<Integer> deletionUsingRecursion(Node<Integer> head, Integer index) {
 
 		if (index == 0) {
 			return head.next;
@@ -329,7 +330,7 @@ public class LinkedClassUse {
 
 	}
 
-	private static int findNode(Node<Integer> head, Integer nodeData) {
+	public static int findNode(Node<Integer> head, Integer nodeData) {
 		int count = 0;
 		Node<Integer> temp = head;
 		while (temp != null) {
@@ -342,7 +343,7 @@ public class LinkedClassUse {
 		return -1;
 	}
 
-	private static Node<Integer> appendLastNToFirst(Node<Integer> head, Integer n) {
+	public static Node<Integer> appendLastNToFirst(Node<Integer> head, Integer n) {
 		int length = count(head);
 		int dis = length - n;
 		Node<Integer> dummy = new Node<Integer>(0);
@@ -377,7 +378,7 @@ public class LinkedClassUse {
 		return node3.next;
 	}
 
-	private static Node<Integer> appendLastNToFirst2(Node<Integer> head, Integer n) {
+	public static Node<Integer> appendLastNToFirst2(Node<Integer> head, Integer n) {
 
 		int length = count(head);
 
@@ -435,7 +436,7 @@ public class LinkedClassUse {
 		return finalNode.next;
 	}
 
-	private static Node<Integer> addTwoNodes(Node<Integer> head, Node<Integer> head2) {
+	public static Node<Integer> addTwoNodes(Node<Integer> head, Node<Integer> head2) {
 
 		Node<Integer> dummy = new Node<Integer>(0);
 		Node<Integer> node2 = dummy;
@@ -485,7 +486,7 @@ public class LinkedClassUse {
 		return node2.next;
 	}
 
-	private static Node<Integer> removeNFromLast(Node<Integer> head, Integer n) {
+	public static Node<Integer> removeNFromLast(Node<Integer> head, Integer n) {
 
 		Node<Integer> currentNode = head;
 		int i = 1;
@@ -842,7 +843,7 @@ public class LinkedClassUse {
 		else {
 			p1.next = c2;
 			p2.next = c1;
-			Node temp = c1.next;
+			Node<Integer> temp = c1.next;
 			c1.next = c2.next;
 			c2.next = temp;
 		}
@@ -850,6 +851,7 @@ public class LinkedClassUse {
 		return head;
 	}
 	
+	@SuppressWarnings("null")
 	public static Node<Integer> seperateEvenOdd(Node<Integer> head) {
 		
 		if( head == null && head.next == null ) {

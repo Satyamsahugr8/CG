@@ -1,18 +1,18 @@
 package com.codingninjas.resursion;
 
-public class Recursion2Assignment {
+public class Recursion2 {
 
 	public static void main(String[] args) {
 		
-//		String str = "sipi";
-//		String target = replacePi(str);
-//		System.out.println(target);
+		String str = "sipi";
+		String target = replacePi(str);
+		System.out.println(target);
 		
-//		String str = "1234";
-//		System.out.println(stringToInt(str));
+		String str2 = "1234";
+		System.out.println(stringToInt(str2));
 
-//		String str = "aaaa";
-//		System.out.println(pairStarAdd(str));
+		String str3 = "aaaa";
+		System.out.println(pairStarAdd(str3));
 		
 	}
 	

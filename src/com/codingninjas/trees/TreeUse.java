@@ -2,8 +2,7 @@ package com.codingninjas.trees;
 
 import java.util.Scanner;
 
-import com.codingninjas.queue.QueueUsingLL;
-
+@SuppressWarnings({"resource", "unused"})
 public class TreeUse {
 
 	public static void main(String[] args) {

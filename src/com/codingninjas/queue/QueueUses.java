@@ -1,19 +1,18 @@
 package com.codingninjas.queue;
 
-import com.codingninjas.stack.Node;
-import com.codingninjas.stack.StackEmptyException;
-import com.codingninjas.stack.StackFullException;
+import java.util.Queue;
+import java.util.Stack;
 
 public class QueueUses {
 	
-	public static void main(String[] args) throws StackEmptyException, StackFullException {
+	public static void main(String[] args) throws QueueEmptyException, QueueFullException {
 		
 //		 queueUsingArray();
 //		 queueUsingLL();
-		 queueUsingTwoStack();
+//		 queueUsingTwoStack();
 	}
 	
-	private static void queueUsingTwoStack() throws StackEmptyException {
+	private static void queueUsingTwoStack() throws QueueEmptyException {
 		
 		QueueUsingStack queue = new QueueUsingStack();
 		queue.enQueue(10);
@@ -36,7 +35,7 @@ public class QueueUses {
 		
 	}
 
-	public static void queueUsingArray() throws StackFullException, StackEmptyException {
+	public static void queueUsingArray() throws QueueFullException, QueueEmptyException {
 		QueueUsingArray queue = new QueueUsingArray();
 		queue.enQueue(10);
 		System.out.println(queue.front());
@@ -53,7 +52,7 @@ public class QueueUses {
 		queue.print();
 	}
 
-	public static void queueUsingLL() throws StackFullException, StackEmptyException {
+	public static void queueUsingLL() throws QueueFullException, QueueEmptyException {
 		QueueUsingLL<Integer> queue = new QueueUsingLL<Integer>();
 		queue.enQueue(10);
 		queue.enQueue(20);
@@ -67,5 +66,24 @@ public class QueueUses {
 		System.out.println(queue.size());
 		queue.print();
 	}
+	
+	public static void reverseQueue( QueueUsingLL<Integer> queue, QueueUsingLL<Integer> helper) {
+		
+	}
+	
+	public static Queue<Integer> reverseQueue(Queue<Integer> q) {
+		  
+	      // Write your code here.
+	      Stack<Integer> helper = new Stack<>();
+
+	      while (!q.isEmpty()) {
+	        helper.push(q.remove());
+	      }
+
+	      while(!helper.isEmpty()) {
+	        q.add(helper.pop());
+	      }
+	      return q;
+	    }
 
 }

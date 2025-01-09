@@ -1,5 +1,4 @@
-package com.codingninjas.queue;
-
+package com.codingninjas.trees;
 public class Node<T> {
     
 	T data;

@@ -1,5 +1,7 @@
-package com.codingninjas.queue;
+package com.codingninjas.treesbinarytrees;
 
+import com.codingninjas.linkedlist.Node;
+import com.codingninjas.queue.QueueEmptyException;
 
 public class QueueUsingLL<T> {
 

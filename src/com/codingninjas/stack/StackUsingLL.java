@@ -14,14 +14,14 @@ public class StackUsingLL<T> {
 		return size; 
 	}
 	
-	T top() throws StackEmptyException {
+	public T top() throws StackEmptyException {
 		if ( size() == 0 ) {
 			throw new StackEmptyException();
 		}
 		return head.data;
 	}
 	
-	boolean isEmpty() {
+	public boolean isEmpty() {
 		if ( size != 0 ) {
 			return false;
 		}	

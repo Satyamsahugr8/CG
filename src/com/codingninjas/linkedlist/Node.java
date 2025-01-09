@@ -2,9 +2,13 @@ package com.codingninjas.linkedlist;
 
 public class Node<T> {
     
-	T data;
-    Node<T> next;
+	public T data;
+    public Node<T> next;
 
+    public Node() {
+        super();
+    }
+    
     public Node(T data) {
         this.data = data;
 //        this.next = null;
@@ -14,6 +18,5 @@ public class Node<T> {
         this.data = data2;
         this.next = next;
     }
-
-
+    
 }
