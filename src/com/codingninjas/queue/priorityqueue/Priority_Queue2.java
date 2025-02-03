@@ -37,9 +37,43 @@ public class Priority_Queue2 {
         return heap.get(0);
     }
 
+    public Integer removeMin() throws priorityQueueException {
+        
+        if ( isEmpty() ) throw new priorityQueueException();
+        
+        int temp = heap.get(0);
+        heap.set(0, heap.get(heap.size() - 1));
+        heap.remove(heap.size() - 1);
+        int index = 0;
+        int minIndex = index;
+        int leftChildIndex = 2 * minIndex + 1;
+        int rightChildIndex = 2 * minIndex + 2;
 
-    public Integer removeMin() {
-        return 0;
+        while ( leftChildIndex < heap.size() ) {
+            
+            if ( heap.get(leftChildIndex) < heap.get(minIndex) ) {
+                minIndex = leftChildIndex;
+            }
+
+            if ( rightChildIndex < heap.size() &&  heap.get(rightChildIndex) < heap.get(minIndex) ) {
+                minIndex = rightChildIndex;
+            }
+            if ( minIndex == index ) {
+                break;
+            }
+
+            //swap
+            int temp1 = heap.get(index);
+            heap.set(index, heap.get(minIndex));
+            heap.set(minIndex, temp1);
+
+            // update index
+            index = minIndex;
+            leftChildIndex = 2 * index + 1;
+            rightChildIndex = 2 * index + 2;
+        }
+
+        return temp;
     }
 
 

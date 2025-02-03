@@ -17,7 +17,7 @@ public class Priority_Queue<T> {
 
     public void insert(T value, int periority) {
 
-        heap.add();
+        // heap.add();
 
     }
 
@@ -28,7 +28,7 @@ public class Priority_Queue<T> {
 
 
     public T removeMin() {
-        
+        return null;
     }
 
 
