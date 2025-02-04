@@ -2,10 +2,10 @@ package com.codingninjas.queue.priorityqueue;
 
 import java.util.ArrayList;
 
-public class Priority_Queue2 {
+public class Priority_Queue2_Max {
     private ArrayList<Integer> heap;
 
-    public Priority_Queue2() {
+    public Priority_Queue2_Max() {
         this.heap = new ArrayList<>();
     }
 
@@ -17,7 +17,7 @@ public class Priority_Queue2 {
         // upheapify
         while ( childIndex > 0 ) {
 
-            if ( heap.get(childIndex) < heap.get(parentIndex) ) {
+            if ( heap.get(childIndex) > heap.get(parentIndex) ) {
                 int temp = heap.get(childIndex);
                 heap.set(childIndex, heap.get(parentIndex));
                 heap.set(parentIndex, temp);
@@ -51,11 +51,11 @@ public class Priority_Queue2 {
 
         while ( leftChildIndex < heap.size() ) {
             
-            if ( heap.get(leftChildIndex) < heap.get(minIndex) ) {
+            if ( heap.get(leftChildIndex) > heap.get(minIndex) ) {
                 minIndex = leftChildIndex;
             }
 
-            if ( rightChildIndex < heap.size() &&  heap.get(rightChildIndex) < heap.get(minIndex) ) {
+            if ( rightChildIndex < heap.size() &&  heap.get(rightChildIndex) > heap.get(minIndex) ) {
                 minIndex = rightChildIndex;
             }
             if ( minIndex == index ) {
@@ -85,7 +85,4 @@ public class Priority_Queue2 {
         return size() == 0;
     }
 
-    public static void main(String[] args) {
-        System.out.println("ss");
-    }
 }
