@@ -108,8 +108,8 @@ public class Recursion3 {
 		int[] arr = { 1, 2, 3 };
 		int[] output = new int[0];
 		int[][] answeer = arraySubsequences(arr, 0);
-
-		for (int[] is : answeer) {
+		List<List<Integer>> lst = subsets(arr, 0);
+		for (List<Integer> is : lst) {
 			for (int is2 : is) {
 				System.out.print(is2 + " ");
 			}
@@ -690,6 +690,51 @@ public class Recursion3 {
 
 		return small;
 	}
+	
+	public static List<List<Integer>> subsets(int[] arr, int si) {
+		
+		if ( arr.length == si ) {
+			List<List<Integer>> lstlst = new ArrayList<List<Integer>>();
+			List<Integer> temp = new ArrayList<>();
+			int[] nus = temp.stream().mapToInt(Integer::intValue).toArray();
+			lstlst.add(temp);
+			return lstlst;
+		}
+
+		List<List<Integer>> smallAns = subsets(arr, si + 1);
+		
+		System.out.println("smallAns : ");
+		for (List<Integer> is : smallAns) {
+			for (int is2 : is) {
+				System.out.print(is2 + " ");
+			}
+			System.out.println();
+		}
+		
+		List<List<Integer>> answer = new ArrayList<>();
+
+		// adding current smaller answer
+//		for (int j = 0; j < smallAns.size(); j++) {
+//			answer.add(smallAns.get(j));
+//		}
+		
+		answer.addAll(smallAns);
+
+		// adding current first element with smaller answer
+		for (int j = 0; j < smallAns.size(); j++) {
+
+			List<Integer> temp = new ArrayList<>();
+			temp.add(arr[si]);
+			
+			for (int js : smallAns.get(j)) {
+				temp.add(js);
+			}
+
+			answer.add(temp);
+		}
+
+		return answer;
+    }
 
 	public static int[][] arraySubsequences(int[] arr, int si) {
 

@@ -2,7 +2,9 @@ package com.codingninjas.treesbinarytrees;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Scanner;
 
 import com.codingninjas.stack.StackEmptyException;
@@ -81,10 +83,10 @@ public class BinaryTreeUse {
 //		printBinaryTreeBest(root);
 		
 		//11
-//		System.out.println();
-//		mirrorBinaryTree(root);
-//		System.out.print("mirrorBinaryTree : ");
-//		printBinaryTreeBest(root);
+		System.out.println();
+		mirrorBinaryTree(root);
+		System.out.print("mirrorBinaryTree : ");
+		printBinaryTreeBest(root);
 		
 		//12
 		System.out.println();
@@ -222,11 +224,11 @@ public class BinaryTreeUse {
 		
 		//31
 		//LCA of Binary Tree
-		int x = 5;
-		int y = 1;
-		int lca = lcaOfBinaryTree(root, x, y);
-		System.out.println();
-		System.out.println("LCA : " + lca);
+//		int x = 5;
+//		int y = 1;
+//		int lca = lcaOfBinaryTree(root, x, y);
+//		System.out.println();
+//		System.out.println("LCA : " + lca);
 		
 		//32
 		//LCA of Binary Tree
@@ -266,9 +268,47 @@ public class BinaryTreeUse {
 			System.out.println();
 		}
 		
+		
+		//36
+		//symmetric
+		boolean s = returnSymmetric(root);
+		System.out.println();
+		System.out.println("symmetric : " + s);
 
 	}
 	
+	private static boolean returnSymmetric(BinaryTreeNode<Integer> root) {
+		
+		if ( root == null ) {
+			return true;
+		}
+		
+		Queue<BinaryTreeNode<Integer>> leftTree = new LinkedList<BinaryTreeNode<Integer>>();
+		Queue<BinaryTreeNode<Integer>> rightTree = new LinkedList<BinaryTreeNode<Integer>>();
+
+		leftTree.add(root.left);
+		rightTree.add(root.right);
+		
+		while ( !leftTree.isEmpty() && !rightTree.isEmpty() ) {
+
+			BinaryTreeNode<Integer> frontL = leftTree.poll();
+			BinaryTreeNode<Integer> frontR = rightTree.poll();
+			
+			if ( frontL == null && frontR == null ) continue;
+			if ( frontL == null || frontR == null ) return false;
+			if ( frontL.data != frontR.data ) return false;
+			
+			//push 
+			leftTree.add(frontL.left);
+			leftTree.add(frontL.right);
+			rightTree.add(frontR.right);
+			rightTree.add(frontR.left);
+			
+		}
+		
+		return true;
+	}
+
 	public static ArrayList<ArrayList<Integer>> bestApproachReturnArray(BinaryTreeNode<Integer> root, int tar) {
 		
         ArrayList<ArrayList<Integer>> array = new ArrayList<>();
@@ -342,6 +382,93 @@ public class BinaryTreeUse {
 		
 	}
 
+	public static BinaryTreeNode<Integer> getNextFromNormalReversePreOrder(
+			StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>> leftStackOrIn_OrderStack) {
+		
+		while ( !leftStackOrIn_OrderStack.isEmpty() ) {
+			try {
+				
+				Pairr<BinaryTreeNode<Integer>, Integer> top = leftStackOrIn_OrderStack.top();
+				
+				// pre, s++ , left
+				if ( top.second == 1 ) { 
+
+					if ( top.first.right != null ) {
+						Pairr<BinaryTreeNode<Integer>, Integer> lp = new Pairr<BinaryTreeNode<Integer>, Integer>(top.first.right, 1);
+						leftStackOrIn_OrderStack.push(lp);
+					}
+					top.second++;
+					return top.first;
+				}
+				
+				// in, s++ ,right
+				else if ( top.second == 2 ) {
+					
+					if ( top.first.left != null ) {
+						Pairr<BinaryTreeNode<Integer>, Integer> lp = new Pairr<BinaryTreeNode<Integer>, Integer>(top.first.left, 1);
+						leftStackOrIn_OrderStack.push(lp);
+					}
+					top.second++;
+				}
+				
+				// post, pop
+				else {
+					leftStackOrIn_OrderStack.pop();
+				}
+				
+			} catch (StackEmptyException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return null;
+	}
+	
+	public static BinaryTreeNode<Integer> getNextFromNormalPreOrder(StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>> leftStackOrIn_OrderStack) {
+		
+		while ( !leftStackOrIn_OrderStack.isEmpty() ) {
+			try {
+				
+				Pairr<BinaryTreeNode<Integer>, Integer> top = leftStackOrIn_OrderStack.top();
+				
+				// pre, s++ , left
+				if ( top.second == 1 ) { 
+
+					if ( top.first.left != null ) {
+						Pairr<BinaryTreeNode<Integer>, Integer> lp = new Pairr<BinaryTreeNode<Integer>, Integer>(top.first.left, 1);
+						leftStackOrIn_OrderStack.push(lp);
+					}
+					top.second++;
+					return top.first;
+				}
+				
+				// in, s++ ,right
+				else if ( top.second == 2 ) {
+					
+					if ( top.first.right != null ) {
+						Pairr<BinaryTreeNode<Integer>, Integer> lp = new Pairr<BinaryTreeNode<Integer>, Integer>(top.first.right, 1);
+						leftStackOrIn_OrderStack.push(lp);
+					}
+					top.second++;
+					
+				}
+				
+				// post, pop
+				else {
+					leftStackOrIn_OrderStack.pop();
+				}
+				
+			} catch (StackEmptyException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return null;
+		
+	}
+
 	public static BinaryTreeNode<Integer> getNextFromNormalReverseInOrder(
 			StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>> leftStackOrIn_OrderStack) {
 		
@@ -384,9 +511,8 @@ public class BinaryTreeUse {
 		
 		return null;
 	}
-
-	public static BinaryTreeNode<Integer> getNextFromNormalInOrder(
-			StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>> leftStackOrIn_OrderStack) {
+	
+	public static BinaryTreeNode<Integer> getNextFromNormalInOrder(StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>> leftStackOrIn_OrderStack) {
 		
 		while ( !leftStackOrIn_OrderStack.isEmpty() ) {
 			try {
@@ -429,6 +555,130 @@ public class BinaryTreeUse {
 		
 	}
 
+	public static Pairrr<BinaryTreeNode<Integer>, Integer, Integer> getNextFromNormalReverseInOrderPair(
+			StackUsingLL<Pairrr<BinaryTreeNode<Integer>, Integer, Integer>> leftStackOrIn_OrderStack) {
+		
+		while ( !leftStackOrIn_OrderStack.isEmpty() ) {
+			try {
+				
+				Pairrr<BinaryTreeNode<Integer>, Integer, Integer> top = leftStackOrIn_OrderStack.top();
+				
+				// pre, s++ , left
+				if ( top.second == 1 ) { 
+					
+					
+					Integer s = -1;
+					
+					if ( top.first.left != null && top.first.right == null ) {
+						s = 1;
+					} else if ( top.first.left == null && top.first.right != null ) {
+						s = 2;
+					}
+
+					if ( top.first.right != null ) {
+						Pairrr<BinaryTreeNode<Integer>, Integer, Integer> lp = new Pairrr<BinaryTreeNode<Integer>, Integer, Integer>(top.first.right, 1, s);
+						leftStackOrIn_OrderStack.push(lp);
+					}
+					top.second++;
+				}
+				
+				// in, s++ ,right
+				else if ( top.second == 2 ) {
+					
+					Integer s = -1;
+					
+					if ( top.first.left != null && top.first.right == null ) {
+						s = 1;
+					} else if ( top.first.left == null && top.first.right != null ) {
+						s = 2;
+					}
+					
+					if ( top.first.left != null ) {
+						Pairrr<BinaryTreeNode<Integer>, Integer, Integer> lp = new Pairrr<BinaryTreeNode<Integer>, Integer, Integer>(top.first.left, 1, s);
+						leftStackOrIn_OrderStack.push(lp);
+					}
+					top.second++;
+					return top;
+				}
+				
+				// post, pop
+				else {
+					leftStackOrIn_OrderStack.pop();
+				}
+				
+			} catch (StackEmptyException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return null;
+	}
+	
+	public static Pairrr<BinaryTreeNode<Integer>, Integer, Integer> getNextFromNormalInOrderPair(
+			StackUsingLL<Pairrr<BinaryTreeNode<Integer>, Integer, Integer>> leftStackOrIn_OrderStack) {
+		
+		while ( !leftStackOrIn_OrderStack.isEmpty() ) {
+			try {
+				
+				Pairrr<BinaryTreeNode<Integer>, Integer, Integer> top = leftStackOrIn_OrderStack.top();
+				
+				// pre, s++ , left
+				if ( top.second == 1 ) {
+					
+					Integer s = -1;
+					
+					if ( top.first.left != null && top.first.right == null ) {
+						s = 1;
+					} else if ( top.first.left == null && top.first.right != null ) {
+						s = 2;
+					}
+//					else {
+//						s = 3;
+//					}
+					
+					if ( top.first.left != null ) {
+						Pairrr<BinaryTreeNode<Integer>, Integer, Integer> lp = new Pairrr<BinaryTreeNode<Integer>, Integer, Integer>(top.first.left, 1, s);
+						leftStackOrIn_OrderStack.push(lp);
+					}
+					top.second++;
+				}
+				
+				// in, s++ ,right
+				else if ( top.second == 2 ) {
+					
+					Integer s = -1;
+					
+					if ( top.first.left != null && top.first.right == null ) {
+						s = 1;
+					} else if ( top.first.left == null && top.first.right != null ) {
+						s = 2;
+					}
+					
+					if ( top.first.right != null ) {
+						Pairrr<BinaryTreeNode<Integer>, Integer, Integer> lp = new Pairrr<BinaryTreeNode<Integer>, Integer, Integer>(top.first.right, 1, s);
+						leftStackOrIn_OrderStack.push(lp);
+					}
+					top.second++;
+					return top;
+				}
+				
+				// post, pop
+				else {
+					leftStackOrIn_OrderStack.pop();
+				}
+				
+			} catch (StackEmptyException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return null;
+		
+	}
+
+	
 	public static void printInorderUsingIterative(BinaryTreeNode<Integer> root) {
 		
 		StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>> stack = new StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>>();

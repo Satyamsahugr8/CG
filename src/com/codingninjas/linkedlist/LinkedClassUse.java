@@ -2,6 +2,21 @@ package com.codingninjas.linkedlist;
 
 import java.util.Scanner;
 
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int data1) {
+        val = data1;
+        next = null;
+    }
+
+    ListNode(int data1, ListNode next1) {
+        val = data1;
+        next = next1;
+    }
+}
+
 class DoubleNode {
 	Node<Integer> head;
 	Node<Integer> tail;
@@ -904,6 +919,10 @@ public class LinkedClassUse {
 		oddTail.next = evenHead;
 		return oddHead;
 	}
+	
+	public ListNode sortList(ListNode head) {
+        return null;
+    }
  	
 	public static void main(String[] args) {
 

@@ -11,10 +11,12 @@ public class StackUse {
 
 //		stackUsingArray();
 //		stackUsingLL();
-//		System.out.println(balanceOutParenthesis());
+//		System.out.println(balanceOutParenthesis("{()}"));
 //		reverseStackProblem();
 		
-		bracketRedundantProblem2();
+//		bracketRedundantProblem2();
+		boolean s = canBeValid(")(","00");
+		System.out.println(s);
 		
 	}
 	
@@ -77,9 +79,40 @@ public class StackUse {
 		
 	}
 	
-	public static boolean balanceOutParenthesis() {
+	public static boolean canBeValid(String s, String locked) {
+		
+		int n = s.length();
+		int countOne = 0;
+		
+		for (int i = 0; i < locked.length(); i++) {
+			if ( locked.charAt(i) == '1' ) {
+				countOne = countOne + 1;
+			}
+		}
+		
+		if ( n%2 != 0 ) return false;
+		
+		Pairr<Stack<Character>, Boolean> ps = balanceOutParenthesisPairr(s);
+		
+		
+		if ( ps.s ) {
+			return true;
+		}
+		
+		System.out.println(ps.f.size());
+		System.out.println(countOne);
+		
+		if (ps.f.size()/2 <= countOne) {
+			return true;
+		}
 
-		String s = "{{}}";
+		return false;
+        
+    }
+	
+	public static Pairr<Stack<Character>, Boolean> balanceOutParenthesisPairr(String s ) {
+
+//		String s = "{()}";
 		Map<Character, Character> map = new HashMap<Character, Character>();
 		map.put(')', '(');
 		map.put('}', '{');
@@ -109,6 +142,47 @@ public class StackUse {
 				stack.push(s.charAt(i));
 			}
 		}
+		
+		System.out.println(stack);
+		
+		return new Pairr<>(stack, stack.isEmpty());
+	}
+	
+	public static boolean balanceOutParenthesis(String s ) {
+
+//		String s = "{()}";
+		Map<Character, Character> map = new HashMap<Character, Character>();
+		map.put(')', '(');
+		map.put('}', '{');
+		map.put(']', '[');
+
+		Stack<Character> stack = new Stack<Character>();
+
+		for (int i = 0; i < s.length(); i++) {
+
+			if (s.charAt(i) == '{' || s.charAt(i) == '}' || s.charAt(i) == '(' || s.charAt(i) == ')'
+					|| s.charAt(i) == '[' || s.charAt(i) == ']') {
+
+				if (!stack.isEmpty()) {
+
+					if (stack.peek() == map.get(s.charAt(i))) {
+						stack.pop();
+						continue;
+					} 
+					
+					else if (s.charAt(i) == '{' || s.charAt(i) == '(' || s.charAt(i) == '[') {
+						stack.push(s.charAt(i));
+						continue;
+					}
+				}
+
+				// first element only / non matching
+				stack.push(s.charAt(i));
+			}
+		}
+		
+		System.out.println(stack);
+		
 		return stack.isEmpty();
 	}
 	
@@ -173,7 +247,7 @@ public class StackUse {
 				}
 				
 				stack.add('e');
-				System.out.println("count : "+ count);
+//				System.out.println("count : "+ count);
 				if ( count <= 1 ) {
 					return true;
 				}
