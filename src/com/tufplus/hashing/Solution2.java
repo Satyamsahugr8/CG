@@ -5,8 +5,9 @@ import java.util.Map;
 
 public class Solution2 {
 
-    public static int mostFrequentElement(int[] nums) {
-        int maxFreq = 0;
+    public static int mostFrequentSecondElement(int[] nums) {
+        
+    	int maxFreq = 0;
         int maxEle = 0;
 
         Map<Integer, Integer> hashMap = new HashMap<>();
@@ -47,8 +48,8 @@ public class Solution2 {
 
 
     public static void main(String[] args) {
-        int[] a = {1,2,3};
-        System.out.println(mostFrequentElement(a));
+        int[] a = {1,1,1,2,2,3,3,3,3};
+        System.out.println(mostFrequentSecondElement(a));
 //        System.out.println(checkSortedMain(a));
 //        System.out.println(checkPrimeMain(15));
 

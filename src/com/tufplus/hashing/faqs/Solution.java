@@ -8,43 +8,53 @@ public class Solution {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		int[] nums = {100, 4, 200, 1, 3, 2};
-//		System.out.println(longestConsecutive(nums));
+		int[] nums = {100, 4, 200, 1, 3, 2};
+		System.out.println(longestConsecutive(nums));
 		
-		int[] nums = {-3, 2, 1};
-		System.out.println(longestSubarray(nums, 6));
+		int[] nums2 = {-3, 2, 1};
+		System.out.println(longestSubarray(nums2, 6));
 	}
 	
-//	public static int longestConsecutive(int[] nums) {
-//		
-//		
-////		Arrays.sort(nums);
-//		
-//		Map<Integer, Integer> hashMap = new HashMap<>();
-//
-//        // Iterating on the array
-//        for (int num : nums) {
-//            hashMap.put(num, hashMap.getOrDefault(num, 0) + 1);
-//        }
-//        
-//        System.out.println(hashMap);
-//        
-//        
-//        int longestCounter = 0;
-//		int count = 0;
-//        for (Map.Entry<Integer, Integer> it : hashMap.entrySet()) {
-//            int ele = it.getKey();
-//            int freq = it.getValue();
-//            
-//            if ()
-//            
-//            
-//        }
-//        
-//		return longestCounter;
-//
-//        
-//    }
+	public static int longestConsecutive(int[] nums) {
+		
+		
+		Arrays.sort(nums);
+		
+		Map<Integer, Integer> hashMap = new HashMap<>();
+
+        // Iterating on the array
+        for (int num : nums) {
+            hashMap.put(num, hashMap.getOrDefault(num, 0) + 1);
+        }
+        
+        System.out.println(hashMap);
+        
+        
+        int longestCounter = 0;
+		int count = 0;
+		int prev = -1;
+        
+		for (Map.Entry<Integer, Integer> it : hashMap.entrySet()) {
+            int ele = it.getKey();
+            int freq = it.getValue();
+            
+//            if (ele )
+            if ( prev == -1 ) {
+            	prev = ele;
+            }
+            
+            if ( ele == ++prev ) {
+            	count++;
+            }
+            
+            longestCounter = Math.max(count, longestCounter);
+           
+        }
+        
+		return longestCounter;
+
+        
+    }
 	
 	
 	public static int longestSubarray(int[] nums, int k) {
