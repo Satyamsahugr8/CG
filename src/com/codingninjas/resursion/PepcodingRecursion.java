@@ -1,7 +1,6 @@
 package com.codingninjas.resursion;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PepcodingRecursion {
 
@@ -104,7 +103,7 @@ public class PepcodingRecursion {
 	}
 
 	private static int lastIndexOfX(int[] arr, int i, int si) {
-		// TODO Auto-generated method stub
+
 		if ( arr.length == 0 ) {
 			return -1;
 		}
@@ -122,7 +121,6 @@ public class PepcodingRecursion {
 	}
 	
 	private static int lastIndexOfXOptimized(int[] arr, int elem, int si) {
-		// TODO Auto-generated method stub
 		
 		if ( arr.length == 0 ) {
 			return -1;
@@ -142,7 +140,7 @@ public class PepcodingRecursion {
 	}
 	
 	private static int firstIndexOfX(int[] arr, int i, int si) {
-		// TODO Auto-generated method stub
+
 		if ( arr.length == 0 ) {
 			return -1;
 		}

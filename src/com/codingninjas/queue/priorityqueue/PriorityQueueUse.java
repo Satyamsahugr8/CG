@@ -1,6 +1,18 @@
 package com.codingninjas.queue.priorityqueue;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
+
+class MaxPQComparator implements Comparator<Integer> {
+
+    @Override
+    public int compare(Integer o1, Integer o2) {
+        if ( o1 < o2 ) return -1;
+        else if ( o1 > o2 ) return 1;
+        return 0;
+    }
+    
+}
 
 public class PriorityQueueUse {
 
@@ -195,7 +207,52 @@ public class PriorityQueueUse {
         // priority_Queue2MinUse();
         // priority_Queue2MaxUse();
         // inbuiltPriorityQueueUse();
-        sortKSorted();
+        // sortKSorted();
+        kLargestElement();
+
+    }
+
+    private static void kLargestElement() {
+        
+        int arr[] = {2,15,8,9,12,13,20};
+        int ans[] = kLargestElement(arr, 3);
+        
+        for (int i : ans) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+
+    private static int[] kLargestElement(int[] arr, int k) {
+        
+        MaxPQComparator max = new MaxPQComparator();
+        PriorityQueue<Integer> pQueue = new PriorityQueue<>(max);
+        
+        int i = 0;
+        
+        while ( i < k ) {
+            pQueue.add(arr[i]);
+            i++;
+        }
+
+        while ( i < arr.length ) {
+            if ( arr[i] > pQueue.peek() ) {
+                pQueue.remove();
+                pQueue.add(arr[i]);
+                i++;
+            } else {
+                i++;
+            }
+        }
+
+        int j = 0;
+        int []anew = new int[pQueue.size()];
+        while (!pQueue.isEmpty()) {
+            anew[j] = pQueue.remove();
+            j++;
+        }
+        
+        return anew;
     }
 
     private static void sortKSorted() {

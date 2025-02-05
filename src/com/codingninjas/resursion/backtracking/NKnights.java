@@ -2,12 +2,12 @@ package com.codingninjas.resursion.backtracking;
 
 import java.util.ArrayList;
 
-class three <T,U,V> {
+class Three <T,U,V> {
 	T first;
 	U second;
 	V third;
 	
-	public three(T first, U second, V third) {
+	public Three(T first, U second, V third) {
 		super();
 		this.first = first;
 		this.second = second;
@@ -38,7 +38,7 @@ public class NKnights {
 		// no moves return 
 		
 		
-		three<Boolean, Integer, Integer> item = isValidAndMove(board, row, col);
+		Three<Boolean, Integer, Integer> item = isValidAndMove(board, row, col);
 		
 //		if ( item.first ) {
 //			moveKnight(board, item.second, item.third);
@@ -149,7 +149,7 @@ public class NKnights {
 		
 	}
 	
-	private static three<Boolean, Integer, Integer> isValidAndMove(int[][] board, Integer row, Integer col) {
+	private static Three<Boolean, Integer, Integer> isValidAndMove(int[][] board, Integer row, Integer col) {
 
 		int n = board.length;
 		board[row][col] = 1;
@@ -158,8 +158,8 @@ public class NKnights {
 		if (row - 2 >= 0 && row - 2 < n && col + 1 >= 0 && col + 1 < n) {
 			if (board[row - 2][col + 1] != 1) {
 //				board[row][col] = 1;
-				 if (!isValidAndMove(board, row-2, col+1).first ) return new three<Boolean, Integer, Integer>(false, row, col);
-//				return new three<Boolean, Integer, Integer>(true, row-2, col+1);
+				 if (!isValidAndMove(board, row-2, col+1).first ) return new Three<Boolean, Integer, Integer>(false, row, col);
+//				return new Three<Boolean, Integer, Integer>(true, row-2, col+1);
 			}
 
 		}
@@ -169,8 +169,8 @@ public class NKnights {
 			if (board[row - 1][col + 2] != 1) {
 //				board[row][col] = 1;
 //				isValidAndMove(board, row-1, col+2);
-				if (!isValidAndMove(board, row-1, col+2).first ) return new three<Boolean, Integer, Integer>(false, row, col);
-//				return new three<Boolean, Integer, Integer>(true, row-1, col+2);
+				if (!isValidAndMove(board, row-1, col+2).first ) return new Three<Boolean, Integer, Integer>(false, row, col);
+//				return new Three<Boolean, Integer, Integer>(true, row-1, col+2);
 			}
 
 		}
@@ -179,8 +179,8 @@ public class NKnights {
 		if ( col + 2 >= 0 && col + 2 < n && row + 1 < n && row + 1 >= 0 ) {
 			if (board[row + 1][col + 2] != 1) {
 //				board[row][col] = 1;
-				if (!isValidAndMove(board, row+1, col+2).first ) return new three<Boolean, Integer, Integer>(false, row, col);
-//				return new three<Boolean, Integer, Integer>(true, row+1, col+2);
+				if (!isValidAndMove(board, row+1, col+2).first ) return new Three<Boolean, Integer, Integer>(false, row, col);
+//				return new Three<Boolean, Integer, Integer>(true, row+1, col+2);
 			}
 			
 		}
@@ -189,8 +189,8 @@ public class NKnights {
 		if ( row + 2 >= 0 && row + 2 < n && col + 1 >= 0 && col + 1 < n ) {
 			if (board[row + 2][col + 1] != 1) {
 //				board[row][col] = 1;
-				if (!isValidAndMove(board, row+2, col+1).first ) return new three<Boolean, Integer, Integer>(false, row, col);
-//				return new three<Boolean, Integer, Integer>(true, row+2, col+1);
+				if (!isValidAndMove(board, row+2, col+1).first ) return new Three<Boolean, Integer, Integer>(false, row, col);
+//				return new Three<Boolean, Integer, Integer>(true, row+2, col+1);
 			}
 		}
 		
@@ -198,8 +198,8 @@ public class NKnights {
 		if ( row + 2 >= 0 && row + 2 < n && col - 1 >= 0 && col - 1 < n ) {
 			if (board[row + 2][col - 1] != 1) {
 //				board[row][col] = 1;
-				if (!isValidAndMove(board, row+2, col-1).first ) return new three<Boolean, Integer, Integer>(false, row, col);
-//				return new three<Boolean, Integer, Integer>(true, row+2, col-1);
+				if (!isValidAndMove(board, row+2, col-1).first ) return new Three<Boolean, Integer, Integer>(false, row, col);
+//				return new Three<Boolean, Integer, Integer>(true, row+2, col-1);
 
 			}
 		}
@@ -208,8 +208,8 @@ public class NKnights {
 		if ( col - 2 >= 0 && col - 2 < n && row + 1 < n && row + 1 >= 0) {
 			if (board[row + 1][col - 2] != 1) {
 //				board[row][col] = 1;
-				if (!isValidAndMove(board, row+1, col-2).first ) return new three<Boolean, Integer, Integer>(false, row, col);
-//				return new three<Boolean, Integer, Integer>(true, row+1, col-2);
+				if (!isValidAndMove(board, row+1, col-2).first ) return new Three<Boolean, Integer, Integer>(false, row, col);
+//				return new Three<Boolean, Integer, Integer>(true, row+1, col-2);
 
 			}
 		}
@@ -218,8 +218,8 @@ public class NKnights {
 		if ( col - 2 >= 0 && col - 2 < n && row - 1 >= 0 && row - 1 < n ) {
 			if (board[row - 1][col - 2] != 1) {
 //				board[row][col] = 1;
-				if (!isValidAndMove(board, row-1, col-2).first ) return new three<Boolean, Integer, Integer>(false, row, col);
-//				return new three<Boolean, Integer, Integer>(true, row-1, col-2);
+				if (!isValidAndMove(board, row-1, col-2).first ) return new Three<Boolean, Integer, Integer>(false, row, col);
+//				return new Three<Boolean, Integer, Integer>(true, row-1, col-2);
 
 			}
 		}
@@ -228,12 +228,12 @@ public class NKnights {
 		if ( row - 2 >= 0 && row - 2 < n && col - 1 >= 0 && col - 1 < n ) {
 			if (board[row - 2][col - 1] != 1) {
 //				board[row][col] = 1;
-				if (!isValidAndMove(board, row-2, col-1).first ) return new three<Boolean, Integer, Integer>(false, row, col);
-//				return new three<Boolean, Integer, Integer>(true, row-2, col-1);
+				if (!isValidAndMove(board, row-2, col-1).first ) return new Three<Boolean, Integer, Integer>(false, row, col);
+//				return new Three<Boolean, Integer, Integer>(true, row-2, col-1);
 			}
 		}
 
-		return new three<Boolean, Integer, Integer>(false, row, col);
+		return new Three<Boolean, Integer, Integer>(false, row, col);
 	}
 	
 	private static boolean isValid(int[][] board, Integer row, Integer col) {

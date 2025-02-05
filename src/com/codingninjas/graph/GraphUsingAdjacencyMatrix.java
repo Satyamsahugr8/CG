@@ -2,7 +2,6 @@ package com.codingninjas.graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
@@ -22,11 +21,11 @@ public class GraphUsingAdjacencyMatrix<T> {
 	public static void main(String[] args) {
 		
 		//input
-//		int adjMatrix[][] = inputGraph();
-//		
-//		//dfs
-//		System.out.print("dfs : ");
-//		depthFirstSearch(adjMatrix);
+		int adjMatrix[][] = inputGraph();
+		
+		//dfs
+		System.out.print("dfs : ");
+		depthFirstSearch(adjMatrix);
 //		
 //		//bfs
 //		System.out.print("bfs : ");
@@ -44,8 +43,8 @@ public class GraphUsingAdjacencyMatrix<T> {
 //		ArrayList<Integer> arrList2 = hasPath2(adjMatrix, 0, 6, visited2);
 //		System.out.println(arrList2);
 		
-		int adjMatrix[][] = inputGraphWithWeight();
-		primalgorithm(adjMatrix);
+		// int adjMatrix[][] = inputGraphWithWeight();
+		// primalgorithm(adjMatrix);
 		
 		
 	}
@@ -239,12 +238,16 @@ public class GraphUsingAdjacencyMatrix<T> {
 	public static void depthFirstSearch(int[][] adjMatrix) {
 		boolean[] visited = new boolean[adjMatrix.length];
 		
+		int count = 0;
 		for (int i = 0; i < visited.length; i++) {
 			if ( visited[i] == false ) {
 				depthFirstSearch(adjMatrix, i, visited);
+				count++;
 				System.out.println();
 			}
 		}
+
+		System.out.println(count);
 		
 	}
 	private static void depthFirstSearch(int[][] adjMatrix, int currVertice, boolean[] visited) {
@@ -268,13 +271,13 @@ public class GraphUsingAdjacencyMatrix<T> {
 		
 		for (int i = 0; i < visited.length; i++) {
 			if ( visited[i] == false ) {
-				birthFirstSearch(adjMatrix, i, visited);
+				breadthFirstSearch(adjMatrix, i, visited);
 				System.out.println();
 			}
 		}
 	}
 
-	private static void birthFirstSearch(int[][] adjMatrix, int i, boolean[] visited) {
+	private static void breadthFirstSearch(int[][] adjMatrix, int i, boolean[] visited) {
 		
 		Queue<Integer> pendingQueue = new LinkedList<Integer>();
 		visited[i] = true;
@@ -297,23 +300,5 @@ public class GraphUsingAdjacencyMatrix<T> {
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

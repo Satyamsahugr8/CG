@@ -16,9 +16,10 @@ public class CountSquares {
 		
 		int storage[] = new int[n+1];
 		
-//		if ( n == 0 || n == 1 || n == 2 || n == 3 ) {
-//			storage[n] = n;
-//		}
+		if ( n == 0 || n == 1 || n == 2 || n == 3 ) {
+			return storage[n] = n;
+		}
+		
 		storage[0] = 0;
 		storage[1] = 1;
 		storage[2] = 2;
@@ -37,11 +38,6 @@ public class CountSquares {
 			
 			storage[i] = minimum + 1;
 		}
-		
-		for (int i : storage) {
-			System.out.print(i + " ");
-		}
-		System.out.println();
 		
 		return storage[n];
 	}
