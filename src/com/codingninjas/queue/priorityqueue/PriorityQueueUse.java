@@ -14,7 +14,33 @@ class MaxPQComparator implements Comparator<Integer> {
     
 }
 
+class MinPQComparator implements Comparator<Integer> {
+
+    @Override
+    public int compare(Integer o1, Integer o2) {
+        if ( o1 > o2 ) return -1;
+        else if ( o1 < o2 ) return 1;
+        return 0;
+    }
+    
+}
+
 public class PriorityQueueUse {
+
+    public static void main(String[] args) throws priorityQueueException {
+
+        // priority_Queue2MinUse();
+        // priority_Queue2MaxUse();
+        // inbuiltPriorityQueueUse();
+        // sortKSorted();
+        // kLargestElement();
+        // inbuiltMaxPriorityQueueUse();
+
+    }
+
+    private static void checkMax() {
+        
+    }
 
     private static void insertIntoVirtualHeap(int[] arr, int i) {
 
@@ -132,7 +158,7 @@ public class PriorityQueueUse {
         return temp;
     }
 
-    void minPriorityQueue() {
+    private static void minPriorityQueue() {
         int arr[] = { 5, 1, 9, 2, 0, 6 };
 
         for (int i = 0; i < arr.length; i++) {
@@ -152,7 +178,7 @@ public class PriorityQueueUse {
         System.out.println();
     }
 
-    void maxPriorityQueue() {
+    private static void maxPriorityQueue() {
         int arr[] = { 5, 1, 9, 2, 0, 6 };
 
         for (int i = 0; i < arr.length; i++) {
@@ -200,16 +226,6 @@ public class PriorityQueueUse {
         }
 
         System.out.println();
-    }
-
-    public static void main(String[] args) throws priorityQueueException {
-
-        // priority_Queue2MinUse();
-        // priority_Queue2MaxUse();
-        // inbuiltPriorityQueueUse();
-        // sortKSorted();
-        kLargestElement();
-
     }
 
     private static void kLargestElement() {
@@ -293,6 +309,26 @@ public class PriorityQueueUse {
     private static void inbuiltPriorityQueueUse() {
         
         PriorityQueue<Integer> pQueue = new PriorityQueue<>();
+        int arr[] = { 9, 1, 0, 4, 7, 3 };
+
+        for (int i = 0; i < arr.length; i++) {
+            pQueue.add(arr[i]);
+        }
+
+        while (!pQueue.isEmpty()) {
+            System.out.print(pQueue.remove() + " ");
+        }
+        System.out.println();
+    
+    }
+
+    private static void inbuiltMaxPriorityQueueUse() {
+        
+        MaxPQComparator max = new MaxPQComparator();
+        MinPQComparator min = new MinPQComparator();
+        PriorityQueue<Integer> pQueue = new PriorityQueue<>(max);
+        // PriorityQueue<Integer> pQueue = new PriorityQueue<>(min);
+        
         int arr[] = { 9, 1, 0, 4, 7, 3 };
 
         for (int i = 0; i < arr.length; i++) {

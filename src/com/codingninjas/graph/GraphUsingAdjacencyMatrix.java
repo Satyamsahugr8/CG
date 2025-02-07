@@ -24,8 +24,8 @@ public class GraphUsingAdjacencyMatrix<T> {
 		int adjMatrix[][] = inputGraph();
 		
 		//dfs
-		System.out.print("dfs : ");
-		depthFirstSearch(adjMatrix);
+		// System.out.print("dfs : ");
+		// depthFirstSearch(adjMatrix);
 //		
 //		//bfs
 //		System.out.print("bfs : ");
@@ -46,10 +46,65 @@ public class GraphUsingAdjacencyMatrix<T> {
 		// int adjMatrix[][] = inputGraphWithWeight();
 		// primalgorithm(adjMatrix);
 		
+		// int cycles = cyclesInGraph(adjMatrix);
+		// System.out.println(cycles/6);
+		System.out.println(cycleDetection(adjMatrix));
 		
 	}
 
-	private static void primalgorithm(int[][] adjMatrix) {
+	static boolean cycleDetection(int[][] adjMatrix) {
+
+		for (int i = 0; i < adjMatrix.length; i++) {
+			for (int j = 0; j < adjMatrix[i].length; j++) {
+				
+				if ( adjMatrix[i][j] == 1 ) {
+					for ( int k = 0; k < adjMatrix[i].length; k++ ) {
+						if ( k != i && adjMatrix[k][i] == 1 ) {
+							return true;
+						}
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+
+	private static int cyclesInGraph(int[][] adjMatrix) {
+
+		int count = 0;
+		
+		for (int i = 0; i < adjMatrix.length; i++) {
+			for (int j = 0; j < adjMatrix[i].length; j++) {
+				
+				if ( adjMatrix[i][j] == 1 ) {
+
+					for ( int k = 0; k < adjMatrix[i].length; k++ ) {
+
+						if ( k != i && checkEdge(adjMatrix, i, k) ) {
+							count++;
+						}
+
+					}
+					
+				}
+
+				// for ( int k = 0; k < adjMatrix[i].length; k++ ) {
+				// 	if ( adjMatrix[i][j] == 1 && adjMatrix[j][k] == 1 && k!=i && adjMatrix[k][i] == 1 ) {
+				// 		count++;
+				// 		break;
+				// 	}
+				// }
+			}
+		}
+		return count;
+	}
+
+	private static boolean checkEdge(int[][] adjMatrix, int i, int k) {
+		return adjMatrix[i][k] == 1;
+	}
+
+	private static void primAlgorithm(int[][] adjMatrix) {
 		int n = adjMatrix.length;
 		boolean visited[] = new boolean[n];
 		int parent[] = new int[n];
