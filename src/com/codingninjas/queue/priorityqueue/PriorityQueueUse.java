@@ -1,7 +1,9 @@
 package com.codingninjas.queue.priorityqueue;
 
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 class MaxPQComparator implements Comparator<Integer> {
 
@@ -27,18 +29,141 @@ class MinPQComparator implements Comparator<Integer> {
 
 public class PriorityQueueUse {
 
-    public static void main(String[] args) throws priorityQueueException {
+    public static void main(String[] args) throws PriorityQueueException {
 
         // priority_Queue2MinUse();
         // priority_Queue2MaxUse();
         // inbuiltPriorityQueueUse();
         // sortKSorted();
         // kLargestElement();
-        // inbuiltMaxPriorityQueueUse();
+//         inbuiltMaxPriorityQueueUse();
+//    	int[] arr = {42, 20, 18, 6, 14, 11, 9, 4};
+    	int[] arr = {9, 6, 7, 5, 6, 5, 4};
+//    	boolean s = checkMax(arr);
+//    	System.out.println(s);
+//    	int[] nums = {3,2,1,5,6,4};
+//    	int ss = findKthLargest(nums, 2);
+//    	System.out.println(ss);
+    	
+    	int[] aar = {2, 3, 2, 2, 4};
+    	int a = buyTicket(aar, aar.length, 3);
+    	System.out.println(a);
+    }
+    
+    
+    private static int buyTicket(int[] aar, int n, int k) throws PriorityQueueException {
+		
+    	Queue<Integer> queue = new LinkedList<Integer>();
+    	MinPQComparator min = new MinPQComparator();
+        PriorityQueue<Integer> pQueue = new PriorityQueue<>(min);
+
+        for (int i = 0; i < aar.length; i++) {
+            pQueue.add(aar[i]);
+            queue.add(i);
+        }
+    	
+    	System.out.println(pQueue);
+    	System.out.println(queue);
+    	
+    	int count = 0;
+    	int tempk = 0;
+    	
+    	while ( !queue.isEmpty() ) {
+			
+    		if ( queue.peek() == pQueue.peek() ) {
+				count++;
+				pQueue.remove();
+				queue.remove();
+			}
+    		
+    		else if ( queue.peek() < pQueue.peek() ) {
+    			int element = queue.remove();
+    			queue.add(element);
+    			tempk++;
+    			if ( tempk == k ) {
+    				tempk = queue.size() - 1;
+    			}
+    		}
+    		
+    		
+		}
+    	
+    	return count;
+    	
+		
+	}
+
+
+	public static int findKthLargest(int[] nums, int k) {
+        
+        PriorityQueue<Integer> pQueue = new PriorityQueue<>();
+        
+        int i = 0;
+        
+        while ( i < k ) {
+            pQueue.add(nums[i]);
+            i++;
+        }
+        
+        System.out.println(pQueue);
+
+        while ( i < nums.length ) {
+            if ( nums[i] > pQueue.peek() ) {
+                pQueue.remove();
+                pQueue.add(nums[i]);
+                i++;
+            } else {
+                i++;    
+            }
+            
+        }
+
+        return pQueue.remove();
 
     }
 
-    private static void checkMax() {
+	private static boolean checkMax(int[] arr) {
+		
+		int index = 0;
+        int leftChildIndex = 2 * index + 1;
+        int rightChildIndex = 2 * index + 2;
+        int heapSize = arr.length;
+
+        while (leftChildIndex < heapSize) {
+
+            int maxIndex = index;
+
+            if (arr[leftChildIndex] > arr[maxIndex]) {
+                return false;
+            }
+            if (rightChildIndex < heapSize && arr[rightChildIndex] > arr[maxIndex]) {
+                return false;
+            }
+            
+            index = leftChildIndex;
+            leftChildIndex = 2 * index + 1;
+            rightChildIndex = 2 * index + 2;
+              
+        }
+        
+        while (leftChildIndex < heapSize) {
+
+            int maxIndex = index;
+
+            if (arr[leftChildIndex] > arr[maxIndex]) {
+                return false;
+            }
+            if (rightChildIndex < heapSize && arr[rightChildIndex] > arr[maxIndex]) {
+                return false;
+            }
+            
+            index = rightChildIndex;
+            leftChildIndex = 2 * index + 1;
+            rightChildIndex = 2 * index + 2;
+
+        }
+
+        return true;
         
     }
 
@@ -198,7 +323,7 @@ public class PriorityQueueUse {
         System.out.println();
     }
 
-    static void priority_Queue2MinUse() throws priorityQueueException {
+    static void priority_Queue2MinUse() throws PriorityQueueException {
         Priority_Queue2_Min pq = new Priority_Queue2_Min();
         int arr[] = { 5, 1, 9, 2, 0, 6 };
 
@@ -213,8 +338,9 @@ public class PriorityQueueUse {
         System.out.println();
     }
 
-    static void priority_Queue2MaxUse() throws priorityQueueException {
-        Priority_Queue2_Max pq = new Priority_Queue2_Max();
+    static void priority_Queue2MaxUse() throws PriorityQueueException {
+        
+    	Priority_Queue2_Max pq = new Priority_Queue2_Max();
         int arr[] = { 5, 1, 9, 2, 0, 6 };
 
         for (int i = 0; i < arr.length; i++) {
@@ -334,6 +460,8 @@ public class PriorityQueueUse {
         for (int i = 0; i < arr.length; i++) {
             pQueue.add(arr[i]);
         }
+        
+        System.out.println(pQueue);
 
         while (!pQueue.isEmpty()) {
             System.out.print(pQueue.remove() + " ");

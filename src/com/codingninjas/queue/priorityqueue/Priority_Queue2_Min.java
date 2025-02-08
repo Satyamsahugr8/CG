@@ -32,14 +32,14 @@ public class Priority_Queue2_Min {
 
     }
 
-    public Integer getMin() throws priorityQueueException {
-        if ( isEmpty() ) throw new priorityQueueException();
+    public Integer getMin() throws PriorityQueueException {
+        if ( isEmpty() ) throw new PriorityQueueException();
         return heap.get(0);
     }
 
-    public Integer removeMin() throws priorityQueueException {
+    public Integer removeMin() throws PriorityQueueException {
         
-        if ( isEmpty() ) throw new priorityQueueException();
+        if ( isEmpty() ) throw new PriorityQueueException();
         
         int temp = heap.get(0);
         heap.set(0, heap.get(heap.size() - 1));
