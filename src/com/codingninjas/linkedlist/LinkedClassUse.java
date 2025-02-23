@@ -130,7 +130,7 @@ public class LinkedClassUse {
 
 		}
 
-//		scanner.close();
+		scanner.close();
 		return head;
 
 	}
@@ -468,10 +468,56 @@ public class LinkedClassUse {
 		while (head != null && head2 != null && dummy != null) {
 			int sum = head.data + head2.data;
 
-			System.out.println((sum + carry) % 10);
 			Node<Integer> node = new Node<Integer>((sum + carry) % 10);
 			carry = (sum + carry) / 10;
-			System.out.println(carry);
+			dummy.next = node;
+			dummy = dummy.next;
+			head = head.next;
+			head2 = head2.next;
+		}
+
+		while (head != null && dummy != null) {
+			Node<Integer> node = new Node<Integer>(head.data);
+			dummy.next = node;
+			dummy = dummy.next;
+			head = head.next;
+
+		}
+
+		while (head2 != null && dummy != null) {
+			Node<Integer> node = new Node<Integer>(head2.data);
+			dummy.next = node;
+			dummy = dummy.next;
+			head2 = head2.next;
+		}
+
+		if (carry != 0) {
+			Node<Integer> node = new Node<Integer>(carry);
+			dummy.next = node;
+			dummy = dummy.next;
+		}
+		return node2.next;
+	}
+	
+	public static Node<Integer> addTwoNodes2(Node<Integer> head, Node<Integer> head2) {
+
+		Node<Integer> dummy = new Node<Integer>(0);
+		Node<Integer> node2 = dummy;
+		int carry = 0;
+
+		if (head == null) {
+			return head2;
+		}
+
+		if (head2 == null) {
+			return head;
+		}
+
+		while (head != null && head2 != null && dummy != null) {
+			int sum = head.data + head2.data;
+
+			Node<Integer> node = new Node<Integer>((sum + carry) % 10);
+			carry = (sum + carry) / 10;
 			dummy.next = node;
 			dummy = dummy.next;
 			head = head.next;

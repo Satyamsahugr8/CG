@@ -1,4 +1,4 @@
-package com.recursion;
+package com.codingninjas.resursion;
 
 public class LastIndexInArray {
     public static void main(String[] args) {

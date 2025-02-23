@@ -6,9 +6,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.adaptJavaQues.personalhealth.main;
+@SuppressWarnings("unused")
 public class Recursion3 {
 
-	@SuppressWarnings("unused")
+//	public static void main(String[] args) {
+//		int[] arr = {1,2,3,4,5};
+////		boolean ff = sumsToK2(arr,0, 0, 8);
+////		System.out.println(ff);
+//		
+//		int ss = sumsToK3Count(arr,0, 0, 8);
+//		System.out.println(ss);
+//	}
+	
 	public static void main(String[] args) {
 
 		Map<Integer, Character[]> keypad = new HashMap<Integer, Character[]>();
@@ -104,17 +114,18 @@ public class Recursion3 {
 		System.out.println();
 
 		// 5
+		System.out.println("5:");
 		System.out.print("arraySubsequences : ");
 		int[] arr = { 1, 2, 3 };
 		int[] output = new int[0];
 		int[][] answeer = arraySubsequences(arr, 0);
-		List<List<Integer>> lst = subsets(arr, 0);
-		for (List<Integer> is : lst) {
-			for (int is2 : is) {
-				System.out.print(is2 + " ");
-			}
-			System.out.println();
-		}
+//		List<List<Integer>> lst = subsets(arr, 0);
+//		for (List<Integer> is : lst) {
+//			for (int is2 : is) {
+//				System.out.print(is2 + " ");
+//			}
+//			System.out.println();
+//		}
 
 		System.out.println();
 		// 5.b
@@ -184,7 +195,6 @@ public class Recursion3 {
 	
 
 	private static void printpermutation(String str, String output) {
-		// TODO Auto-generated method stub
 
 		if (str.length() == 0) {
 			System.out.println(output);
@@ -339,7 +349,7 @@ public class Recursion3 {
 	}
 
 	private static void printSubsetSumToK(int[] arr, int si, int sum, int[] output) {
-		// TODO Auto-generated method stub
+
 
 		if (sum < 0) {
 			return;
@@ -372,6 +382,60 @@ public class Recursion3 {
 		printSubsetSumToK(arr, si + 1, sum - arr[si], newOutput);
 		printSubsetSumToK(arr, si + 1, sum, output);
 
+	}
+	
+	private static int sumsToK3Count(int[] arr, int si, int sum, int target) {
+		
+		int count = 0;
+		
+		if ( si == arr.length ) {
+			if ( sum == target ) return count+1;
+			return count;
+		}
+		
+		if ( sum > target ) {
+			return count;
+		}
+		
+		if ( sum == target ) {
+			return count+1;
+		}
+		
+		// include
+		int leftCall = sumsToK3Count(arr, si + 1, sum + arr[si], target);
+		count += leftCall;
+		
+		// exclude
+		int rightCall = sumsToK3Count(arr, si + 1, sum, target);
+		count += rightCall;
+		
+		return count;
+	}
+	
+	private static boolean sumsToK2(int[] arr, int si, int sum, int target) {
+		
+		if ( si == arr.length ) {
+			if ( sum == target ) return true;
+			return false;
+		}
+		
+		if ( sum > target ) {
+			return false;
+		}
+		
+		if ( sum == target ) {
+			return true;
+		}
+		
+		// include
+		boolean leftCall = sumsToK2(arr, si + 1, sum + arr[si], target);
+		if ( leftCall ) return true;
+		
+		// exclude
+		boolean rightCall = sumsToK2(arr, si + 1, sum, target);
+		if ( rightCall ) return true;
+		
+		return false;
 	}
 
 	private static int[][] sumsToK(int[] arr, int si, int sum) {

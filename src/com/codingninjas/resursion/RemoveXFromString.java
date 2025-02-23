@@ -1,4 +1,4 @@
-package com.recursion;
+package com.codingninjas.resursion;
 
 public class RemoveXFromString {
     public static void main(String[] args) {

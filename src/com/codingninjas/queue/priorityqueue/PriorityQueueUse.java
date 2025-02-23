@@ -38,16 +38,21 @@ public class PriorityQueueUse {
         // kLargestElement();
 //         inbuiltMaxPriorityQueueUse();
 //    	int[] arr = {42, 20, 18, 6, 14, 11, 9, 4};
-    	int[] arr = {9, 6, 7, 5, 6, 5, 4};
+//    	int[] arr = {2,11,10,1,3};
 //    	boolean s = checkMax(arr);
 //    	System.out.println(s);
 //    	int[] nums = {3,2,1,5,6,4};
 //    	int ss = findKthLargest(nums, 2);
 //    	System.out.println(ss);
     	
-    	int[] aar = {2, 3, 2, 2, 4};
-    	int a = buyTicket(aar, aar.length, 3);
-    	System.out.println(a);
+    	int[] aar = {999999999,999999999,999999999};
+//    	int a = buyTicket(aar, aar.length, 3);
+//    	System.out.println(a);
+    	
+//    	minPriorityQueue(arr);
+
+    	int n = minOperations(aar, 1000000000);
+    	System.out.println(n);
     }
     
     
@@ -167,7 +172,7 @@ public class PriorityQueueUse {
         
     }
 
-    private static void insertIntoVirtualHeap(int[] arr, int i) {
+    private static void insertIntoVirtualHeapMax(int[] arr, int i) {
 
         int childIndex = i;
         int parentIndex = (childIndex - 1) / 2;
@@ -187,7 +192,7 @@ public class PriorityQueueUse {
         }
     }
 
-    private static void insertIntoVirtualHeapMax(int[] arr, int i) {
+    private static void insertIntoVirtualHeapMin(int[] arr, int i) {
 
         int childIndex = i;
         int parentIndex = (childIndex - 1) / 2;
@@ -209,7 +214,7 @@ public class PriorityQueueUse {
 
     }
 
-    private static int removeFromVirtualHeap(int[] arr, int heapSize) {
+    private static int removeFromVirtualHeapMax(int[] arr, int heapSize) {
 
         int temp = arr[0];
         arr[0] = arr[heapSize - 1];
@@ -246,7 +251,7 @@ public class PriorityQueueUse {
         return temp;
     }
 
-    private static int removeFromVirtualHeapMax(int[] arr, int heapSize) {
+    private static int removeFromVirtualHeapMin(int[] arr, int heapSize) {
 
         int temp = arr[0];
         arr[0] = arr[heapSize - 1];
@@ -283,16 +288,15 @@ public class PriorityQueueUse {
         return temp;
     }
 
-    private static void minPriorityQueue() {
-        int arr[] = { 5, 1, 9, 2, 0, 6 };
+    private static void minPriorityQueue(int arr[]) {
 
         for (int i = 0; i < arr.length; i++) {
-            insertIntoVirtualHeap(arr, i);
+        	insertIntoVirtualHeapMin(arr, i);
             // insertIntoVirtualHeapMax(arr, i);
         }
 
         for (int i = 0; i < arr.length; i++) {
-            arr[arr.length - 1 - i] = removeFromVirtualHeap(arr, arr.length - i);
+            arr[arr.length - 1 - i] = removeFromVirtualHeapMin(arr, arr.length - i);
             // arr[arr.length - 1 - i] = removeFromVirtualHeapMax(arr, arr.length - i);
         }
 
@@ -307,12 +311,12 @@ public class PriorityQueueUse {
         int arr[] = { 5, 1, 9, 2, 0, 6 };
 
         for (int i = 0; i < arr.length; i++) {
-            insertIntoVirtualHeap(arr, i);
+            insertIntoVirtualHeapMax(arr, i);
             // insertIntoVirtualHeapMax(arr, i);
         }
 
         for (int i = 0; i < arr.length; i++) {
-            arr[arr.length - 1 - i] = removeFromVirtualHeap(arr, arr.length - i);
+            arr[arr.length - 1 - i] = removeFromVirtualHeapMax(arr, arr.length - i);
             // arr[arr.length - 1 - i] = removeFromVirtualHeapMax(arr, arr.length - i);
         }
 
@@ -468,6 +472,52 @@ public class PriorityQueueUse {
         }
         System.out.println();
     
+    }
+    
+    public static int minOperations(int[] nums, int k) {
+        int n = nums.length;
+        int count = 0;
+        
+        PriorityQueue<Integer> pQueue = new PriorityQueue<>();
+
+        for (int i = 0; i < n; i++) {
+            pQueue.add(nums[i]);
+        }
+
+        // int a = -1;
+        // while ( !pQueue.isEmpty() && pQueue.peek() < k ) {
+        //     int curr = pQueue.remove();
+        //     if ( a == -1 ) {
+        //         a = curr;
+        //     }
+        //     else {
+        //         ++count;
+        //         int c = a*2 + curr;
+        //         pQueue.add(c);
+        //         a = -1;
+        //     }
+        // }
+
+        
+        while ( !pQueue.isEmpty() && pQueue.peek() < k ) {
+            int a = pQueue.remove();
+            System.out.println("a "+ a);
+            if ( !pQueue.isEmpty() ) {
+                int b = pQueue.remove();
+                System.out.println("b "+ b);
+                int c = a * 2 + b;
+                if ( c > 0 ) {
+                	pQueue.add(c);
+                } else {
+                	pQueue.add(k);
+                }
+                count++;
+            } else {
+                break;
+            }
+        }
+
+        return count; 
     }
 
 }

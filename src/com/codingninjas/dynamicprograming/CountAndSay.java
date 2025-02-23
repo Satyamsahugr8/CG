@@ -20,6 +20,7 @@ public class CountAndSay {
 		int [][]a = {{3, 9},{5, 9},{8, 10}};
 		Vector<Integer> ssd = chuninNinja(3,3, rr);
 		System.out.println(ssd);
+		
 	}
 	
 	

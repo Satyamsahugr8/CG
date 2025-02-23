@@ -1,4 +1,4 @@
-package com.tufplus.binerysearch.faq;
+package com.tufplus.binarysearch.faq;
 class Solution {
 	
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.recursion;
+package com.codingninjas.resursion;
 
 public class RemoveDuplicateConsequtive {
 
@@ -15,7 +15,9 @@ public class RemoveDuplicateConsequtive {
             String newstring = removeDup(str.substring(1));
             return str.charAt(0) + newstring;
         }
+        
     }
+    
     public static void main(String[] args) {
         String str = "BBBBBBBB";
         System.out.println(removeDup(str));

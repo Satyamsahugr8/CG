@@ -209,7 +209,6 @@ public class BinaryTreeUse {
 		// Done: inorder and postorder to tree
 		
 		//28
-		// TODO: question from tuf+
 		
 		//29
 		System.out.println();
@@ -1256,8 +1255,7 @@ public class BinaryTreeUse {
 	}
 	
 	// Optimized
-	public static BinaryTreeNode<Integer> createTree(
-			int[] preorder, int[] inorder, int preStart, int preEnd, 
+	public static BinaryTreeNode<Integer> createTree(int[] preorder, int[] inorder, int preStart, int preEnd, 
 			int inorderStart, int inorderEnd) {
 		
 		if (preStart > preEnd || inorderStart > inorderEnd) {

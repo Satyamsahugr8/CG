@@ -1,4 +1,4 @@
-package com.tufplus.binerysearch.logicbuilding;
+package com.tufplus.binarysearch.logicbuilding;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;

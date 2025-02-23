@@ -1,4 +1,4 @@
-package com.tufplus.binerysearch.fundamentals;
+package com.tufplus.binarysearch.fundamentals;
 
 public class Solution {
 
