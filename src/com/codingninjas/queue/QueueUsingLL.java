@@ -46,7 +46,13 @@ public class QueueUsingLL<T> {
 	}
 	public T deQueue() {
 		Node<T> temp = front;
-		front = front.next;
+		
+		if (front == null) {  // Check if queue is empty
+            return front.data;
+        }
+
+        T data = front.data;
+        front = front.next;
 		size--;
 		return temp.data;
 	}

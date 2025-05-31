@@ -7,7 +7,7 @@ import java.util.Comparator;
 public class Solution {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		String ss = getHappyString(3, 4 - 1);
 //		System.out.println(ss);
 
@@ -17,8 +17,11 @@ public class Solution {
 		String []nums = {"00","01"};
 		String ss = findDifferentBinaryString(nums);
 		System.out.println(ss);
+		
 	}
+	
 	public static String getHappyString(int n, int k) {
+		
 		String [] ss = {"a", "b", "c"};
         ArrayList<String> ans = createAllHappyString(n, ss, "");
         
@@ -27,14 +30,13 @@ public class Solution {
 		}
         
         if ( k > ans.size() - 1 ) return "";
+        
         return ans.get(k);
     }
 	
 	static ArrayList<String> createAllHappyString(int n, String [] ss, String answer) {
 		
 		ArrayList<String> ans = new ArrayList<String>();
-		
-//		System.out.println(answer.length());
 		
 		if (answer.length() == n) {
 			ans.add(answer);
@@ -79,24 +81,9 @@ public class Solution {
 		}
 		
 		return BinaryStringConverter.toBinaryString(j+1, nums[0].length());
+		
     }
 	
-
 }
 
-class BinaryStringConverter {
-    public static String toBinaryString(int i, int l) {
-        String binary = Integer.toBinaryString(i); // Convert to binary
-        if (binary.length() > l) {
-            return binary.substring(binary.length() - l); // Trim to length
-        } else {
-            return String.format("%" + l + "s", binary).replace(' ', '0'); // Pad with leading zeros
-        }
-    }
 
-    public static void main(String[] args) {
-        System.out.println(toBinaryString(5, 8));  // Output: 00000101
-        System.out.println(toBinaryString(255, 8)); // Output: 11111111
-        System.out.println(toBinaryString(1023, 8)); // Output: 11111111 (trimmed)
-    }
-}

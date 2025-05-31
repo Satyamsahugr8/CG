@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import com.codingninjas.linkedlist.LinkedClassUse;
 import com.codingninjas.linkedlist.Node;
+import com.codingninjas.stack.StackEmptyException;
+import com.codingninjas.stack.StackUsingLL;
 
 @SuppressWarnings({ "unused" })
 public class BinarySearchtreeUse {
@@ -58,31 +60,31 @@ public class BinarySearchtreeUse {
 		
 		// 6
 		// sorted Array to Binary completed tree
-		System.out.println();
-		int[] array = {1,2,3,4,5,6,7};
-		BinaryTreeNode<Integer> rootq = sortedArrayToBinaryTree(array, 0, array.length - 1);
-		System.out.println("Sorted array to binaryTree creatation : ");
-		BinaryTreeUse.printBinaryTreeBest(rootq);
-		
-		// 6
-		//Binary Tree to linkedList	
-		System.out.println();
-		DoubleNode<Integer> doub = binaryTreeToLinkedList(root);
-		Node<Integer> nodee = doub.head;
-		System.out.println("BT to linkedlist is : ");
-		LinkedClassUse.printRecursively(nodee);
-		
-		// TODO:
-		//7
-		//replace with sum of greater nodes
-//		int sum = 0;
-//		int sss = replaceSum(root, sum);
-//		System.out.println(sss);
-//		System.out.println("replace with greatest sum : ");
-//		BinaryTreeUse.printBinaryTreeBest(root);
-		
-		//8
-		// LevelWise linkedList
+//		System.out.println();
+//		int[] array = {1,2,3,4,5,6,7};
+//		BinaryTreeNode<Integer> rootq = sortedArrayToBinaryTree(array, 0, array.length - 1);
+//		System.out.println("Sorted array to binaryTree creatation : ");
+//		BinaryTreeUse.printBinaryTreeBest(rootq);
+//		
+//		// 6
+//		//Binary Tree to linkedList	
+//		System.out.println();
+//		DoubleNode<Integer> doub = binaryTreeToLinkedList(root);
+//		Node<Integer> nodee = doub.head;
+//		System.out.println("BT to linkedlist is : ");
+//		LinkedClassUse.printRecursively(nodee);
+//		
+//		// TODO:
+//		//7
+//		//replace with sum of greater nodes
+////		int sum = 0;
+////		int sss = replaceSum(root, sum);
+////		System.out.println(sss);
+////		System.out.println("replace with greatest sum : ");
+////		BinaryTreeUse.printBinaryTreeBest(root);
+//		
+//		//8
+//		// LevelWise linkedList
 		List<Node<Integer>> node = levelWiseBestReturnLinkedListNode(root);
 		System.out.println();
 		System.out.print("list of linkedListNode : ");
@@ -90,48 +92,241 @@ public class BinarySearchtreeUse {
 		for (Node<Integer> node2 : node) {
 			LinkedClassUse.printRecursively(node2);
 		}
-		
-		//9
-		// Largest BST
-		System.out.println();
-		System.out.print("isBSTMaxHeight : ");
-		Pairrrr<Boolean, Integer, Integer, Integer> pyar = isBSTMaxHeight(root);
-		System.out.println(pyar.fouth);
-		
-		//10 
-		//largest size of BST
-		System.out.println();
-		System.out.print("isBSTMaxHeight : ");
-		Pairrrr<Boolean, Integer, Integer, Integer> pyare = isBSTMaxSize(root);
-		System.out.println(pyare.fouth);
-		
-		//11
-		//DONE : Pair sum
-		// first approach put all node data to form a  sorted Array and then traverse on array 
-		// with out using extra space use in-order and reverse in-order
-		System.out.println();
-		System.out.println();
-		boolean s = pair(root, 28);
-		System.out.println("s : " + s);
-		
-		//12
-//		System.out.println();
-//		System.out.println("pair : ");
-//		ArrayList<ArrayList<Integer>> pair = pairReturn(root, 28);
 //		
-//		for (ArrayList<Integer> arrayList : pair) {
-//			System.out.print(arrayList);
-//		}
+//		//9
+//		// Largest BST
+//		System.out.println();
+//		System.out.print("isBSTMaxHeight : ");
+//		Pairrrr<Boolean, Integer, Integer, Integer> pyar = isBSTMaxHeight(root);
+//		System.out.println(pyar.fouth);
+//		
+//		//10 
+//		//largest size of BST
+//		System.out.println();
+//		System.out.print("isBSTMaxHeight : ");
+//		Pairrrr<Boolean, Integer, Integer, Integer> pyare = isBSTMaxSize(root);
+//		System.out.println(pyare.fouth);
+//		
+//		//11
+//		//DONE : Pair sum
+//		// first approach put all node data to form a  sorted Array and then traverse on array 
+//		// with out using extra space use in-order and reverse in-order
+//		System.out.println();
+//		System.out.println();
+//		boolean s = pair(root, 28);
+//		System.out.println("s : " + s);
+//		
+//		//12
+////		System.out.println();
+////		System.out.println("pair : ");
+////		ArrayList<ArrayList<Integer>> pair = pairReturn(root, 28);
+////		
+////		for (ArrayList<Integer> arrayList : pair) {
+////			System.out.print(arrayList);
+////		}
+//		
+//		//13
+//		System.out.println();
+//		System.out.print("inorder : ");
+//		BinaryTreeUse.inOrder(root);
+//		
+//		System.out.println();
+//		System.out.print("reverse Inorder  : ");
+//		BinaryTreeUse.ReverseInOrder(root);
 		
-		//13
-		System.out.println();
-		System.out.print("inorder : ");
-		BinaryTreeUse.inOrder(root);
+		// floor and ceil
 		
-		System.out.println();
-		System.out.print("reverse Inorder  : ");
-		BinaryTreeUse.ReverseInOrder(root);
+//		int[] arr = {8, 5, 1, 7, 10, 12};
+//		BinaryTreeNode<Integer> root = bstFromPreorder(arr);
+//		System.out.println();
+//		BinaryTreeUse.printBinaryTreeBest(root);
+		
+		succPredBST(root, 10);
+		
 	}
+	
+	public static Integer getNextFromNormalReverseInOrder(
+			StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>> leftStackOrIn_OrderStack) {
+		
+//		List<Integer> ans = new ArrayList<Integer>();
+		while ( !leftStackOrIn_OrderStack.isEmpty() ) {
+			try {
+				
+				Pairr<BinaryTreeNode<Integer>, Integer> top = leftStackOrIn_OrderStack.top();
+				
+				// pre, s++ , left
+				if ( top.second == 1 ) { 
+
+					if ( top.first.right != null ) {
+						Pairr<BinaryTreeNode<Integer>, Integer> lp = new Pairr<BinaryTreeNode<Integer>, Integer>(top.first.right, 1);
+						leftStackOrIn_OrderStack.push(lp);
+					}
+					top.second++;
+				}
+				
+				// in, s++ ,right
+				else if ( top.second == 2 ) {
+					
+					if ( top.first.left != null ) {
+						Pairr<BinaryTreeNode<Integer>, Integer> lp = new Pairr<BinaryTreeNode<Integer>, Integer>(top.first.left, 1);
+						leftStackOrIn_OrderStack.push(lp);
+					}
+					top.second++;
+//					ans.add(top.first.data);
+					return top.first.data;
+				}
+				
+				// post, pop
+				else {
+					leftStackOrIn_OrderStack.pop();
+				}
+				
+			} catch (StackEmptyException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return null;
+	}
+	
+	public static Integer getNextFromNormalInOrder(StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>> leftStackOrIn_OrderStack) {
+		
+		List<Integer> ans = new ArrayList<Integer>();
+		while ( !leftStackOrIn_OrderStack.isEmpty() ) {
+			try {
+				
+				Pairr<BinaryTreeNode<Integer>, Integer> top = leftStackOrIn_OrderStack.top();
+				
+				// pre, s++ , left
+				if ( top.second == 1 ) { 
+
+					if ( top.first.left != null ) {
+						Pairr<BinaryTreeNode<Integer>, Integer> lp = new Pairr<BinaryTreeNode<Integer>, Integer>(top.first.left, 1);
+						leftStackOrIn_OrderStack.push(lp);
+					}
+					top.second++;
+				}
+				
+				// in, s++ ,right
+				else if ( top.second == 2 ) {
+					
+					if ( top.first.right != null ) {
+						Pairr<BinaryTreeNode<Integer>, Integer> lp = new Pairr<BinaryTreeNode<Integer>, Integer>(top.first.right, 1);
+						leftStackOrIn_OrderStack.push(lp);
+					}
+					top.second++;
+//					ans.add(top.first.data);
+					return top.first.data;
+				}
+				
+				// post, pop
+				else {
+					leftStackOrIn_OrderStack.pop();
+				}
+				
+			} catch (StackEmptyException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return null;
+		
+	}
+	
+	public static boolean succPredBST(BinaryTreeNode<Integer> root, int k) {
+        //your code goes here
+		if (root == null) return false;
+
+		StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>> leftStackOrIn_OrderStack = new StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>>();
+		StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>> rightStackOrReverseIn_OrderStack = new StackUsingLL<Pairr<BinaryTreeNode<Integer>, Integer>>();
+		
+		leftStackOrIn_OrderStack.push(new Pairr<BinaryTreeNode<Integer>, Integer>(root, 1));
+		rightStackOrReverseIn_OrderStack.push(new Pairr<BinaryTreeNode<Integer>, Integer>(root, 1));
+		
+		
+        // Initialize two iterators
+        Integer i = getNextFromNormalInOrder(leftStackOrIn_OrderStack); // normal inorder
+        Integer j = getNextFromNormalReverseInOrder(leftStackOrIn_OrderStack); // reverse inorder
+
+        while (i < j) {
+            if (i + j == k) return true;
+            else if (i + j < k) i = getNextFromNormalInOrder(leftStackOrIn_OrderStack);
+            else j = getNextFromNormalReverseInOrder(leftStackOrIn_OrderStack);
+        }
+        
+        return false;
+    }
+	
+	public static BinaryTreeNode<Integer> bstFromPreorder(int[] preorder) {
+        //your code goes here
+		if ( preorder.length == 0 ) {
+			return null;
+		}
+		
+		if ( preorder.length == 1 ) {
+			BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(preorder[0]);
+			return root;
+		}
+		
+		if ( preorder.length == 2 ) {
+			BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(preorder[0]);
+			
+			if ( preorder[1] < preorder[0] ) {
+				root.left = new BinaryTreeNode<Integer>(preorder[1]);
+			} else {
+				root.right = new BinaryTreeNode<Integer>(preorder[1]);
+			}
+			
+			return root;
+		}
+		
+		
+		int leftStart = 0;
+		int leftEnd = preorder.length;
+		int rightStart = 0;
+		int rightEnd = preorder.length;
+		
+		BinaryTreeNode<Integer> root = bstFromPreorder(preorder, leftStart, leftEnd, rightStart, rightEnd);
+		return root;
+    }
+	
+//	int[] arr = {8, 5, 1, 7, 10, 12};
+	private static BinaryTreeNode<Integer> bstFromPreorder(int[] preorder, int leftStart, int leftEnd, int rightStart,
+			int rightEnd) {
+		
+		// create root of root
+		BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(preorder[leftStart]);
+		leftStart = leftStart + 1;
+		int count = 1;
+		
+		for (int i = leftStart; i < preorder.length; i++) {
+			if ( root.data > preorder[i] ) {
+				break;
+			}
+			count++;
+		}
+		
+		leftEnd = leftStart + count - 1;
+		
+		root.left = bstFromPreorder(preorder, leftStart, leftEnd, rightStart, rightEnd);
+		
+		rightStart = leftEnd + 1;
+//		rightEnd = rightEnd;
+	
+		root.right = bstFromPreorder(preorder, leftStart, leftEnd, rightStart, rightEnd);
+		
+		
+		return root;
+	}
+
+	public List<Integer> floorCeilOfBST(TreeNode root, int key) {
+        //your code goes here
+		
+		
+		return null;
+    }
 	
 	public static void inOrder(BinaryTreeNode<Integer> root) {
 		
@@ -306,10 +501,11 @@ public class BinarySearchtreeUse {
 					if ( front.right != null ) {
 						queue.enQueue(front.right);
 					}
+					
 				}
 				
 			}
-//			System.out.println(list);
+
 		}
 		
 		if ( doubleNode.head != null ) listOfList.add(doubleNode.head);

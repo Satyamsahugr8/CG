@@ -49,29 +49,38 @@ public class QueueUsingArray {
 
 	
 	public void enQueue(int element) throws QueueFullException {
+		
 		if ( size == data.length ) {
 			doubleCapacity();
 		}
+		
 		if ( size == 0 ) {
 			front = 0;
 		}
+		
 		rear++;
 		data[rear] = element;
 		size++;
+		
 	}
 	
 	public int deQueue() throws QueueEmptyException {
+		
 		if ( !isEmpty() ) {
+			
 			int temp = data[front];
 			data[front] = 0;
 			front++;
 			size--;
+			
 			if ( size == 0 ) {
 				front = -1;
 				rear = -1;
 			}
+			
 			return temp;
 		}
+		
 		throw new QueueEmptyException();
 	}
 	
@@ -89,5 +98,4 @@ public class QueueUsingArray {
 		System.out.println();
 	}
 	
- 
 }

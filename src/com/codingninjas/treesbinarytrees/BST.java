@@ -55,7 +55,7 @@ public class BST {
 		helperDeleteData(this.root, data);
 	}
 
-private BinaryTreeNode<Integer> helperDeleteData(BinaryTreeNode<Integer> root, int data) {
+	private BinaryTreeNode<Integer> helperDeleteData(BinaryTreeNode<Integer> root, int data) {
 		
 		if ( root == null ) return null;
 		
@@ -96,6 +96,7 @@ private BinaryTreeNode<Integer> helperDeleteData(BinaryTreeNode<Integer> root, i
 		}
 
 		return Math.max(left.data, Math.max(maximum(left.left), maximum(left.right)));
+		
 	}
 
 }

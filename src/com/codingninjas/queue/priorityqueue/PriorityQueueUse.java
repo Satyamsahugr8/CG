@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+
 class MaxPQComparator implements Comparator<Integer> {
 
     @Override
@@ -26,7 +27,7 @@ class MinPQComparator implements Comparator<Integer> {
     }
     
 }
-
+@SuppressWarnings("unused")
 public class PriorityQueueUse {
 
     public static void main(String[] args) throws PriorityQueueException {
@@ -126,6 +127,7 @@ public class PriorityQueueUse {
         return pQueue.remove();
 
     }
+
 
 	private static boolean checkMax(int[] arr) {
 		

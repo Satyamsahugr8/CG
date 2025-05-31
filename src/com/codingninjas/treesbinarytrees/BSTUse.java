@@ -2,6 +2,7 @@ package com.codingninjas.treesbinarytrees;
 
 public class BSTUse {
 
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		

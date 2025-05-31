@@ -15,11 +15,31 @@ public class StackUse {
 //		reverseStackProblem();
 		
 //		bracketRedundantProblem2();
-		boolean s = canBeValid(")(","00");
-		System.out.println(s);
+//		boolean s = canBeValid(")(","00");
+//		System.out.println(s);
+		
+		stackusingQueue();
 		
 	}
 	
+	private static void stackusingQueue() throws StackEmptyException {
+		
+		StackUsingQueue stack = new StackUsingQueue();
+		stack.push(0);
+		stack.push(10);
+		stack.push(20);
+		stack.push(30);
+		
+		stack.print();
+		
+		System.out.println(stack.pop());
+		stack.print();
+		
+		System.out.println(stack.size());
+		System.out.println(stack.isEmpty());
+		
+	}
+
 	private static void reverseStackProblem() {
 
 		Stack<Integer> stack = new Stack<Integer>();

@@ -80,7 +80,11 @@ public class NQueens {
 	public static List<List<String>> solveNQueens(int n) {
 		List<String> board = new ArrayList<String>(n);
 		for (int r = 0; r < n; r++) {
-			board.add("....");
+            String s = "";
+            for (int c = 0; c < n; c++) {
+			    s = s + ".";
+            }
+            board.add(s);
 		}
 		
 		String[][] input = new String[n][n];

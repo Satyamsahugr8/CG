@@ -13,20 +13,63 @@ public class Solution {
 //		System.out.println(missNum);
 		
 //		int[] nums = {1, 0, 6, 4, 0, 5};
+//		int[] nums = {0, 0, 0, 0, 0,0 };
 //		moveZeroes(nums); 
+//		moveZeroesBetterOptimal(nums);
+//		for (int i : nums) {
+//			System.out.println(i);
+//		}
 		
+//		//3rd
+//		int[] arr1 = {1, 2, 2, 3, 5};
+//		int[] arr2 = {1, 2, 7};
+//		
+//		int[] a = unionArray(arr1, arr2);
+//		int[] b = intersectionArray(arr1, arr2);
+//		for (int r : b) {
+//			System.out.print(r + " ");
+//		}
 		
-		//3rd
-		int[] arr1 = {1, 2, 2, 3, 5};
-		int[] arr2 = {1, 2, 7};
+		int[] arr = {0,0,3,3,5,6};
+		int v = removeDuplicates(arr);
 		
-		int[] a = unionArray(arr1, arr2);
-		int[] b = intersectionArray(arr1, arr2);
-		for (int r : b) {
-			System.out.print(r + " ");
+		for (int i : arr) {
+			System.out.println(i);
 		}
+		
+		System.out.println(v);
 	}
 	
+	// remove duplicate from given array 
+	// brute force approach
+	// use set data structure for unique values
+	
+	// 2 use one iteration for eliminating duplicate with 2 pointers
+	public static int removeDuplicates(int[] nums) {
+		
+		int j = 0;
+		int count = 1;
+		
+		for (int i = 0; i < nums.length; i++) {
+			
+			
+			
+			while ( j < nums.length && nums[i] == nums[j] ) {
+				j++;
+			}
+			
+			if ( j < nums.length ) {
+				count++;
+				nums[i+1] = nums[j];
+				j++;
+			}
+			
+		}
+		
+        return count;
+    }
+	
+	// optimal approach 
 	public static int missingNumber(int[] nums) {
         
 		int N = nums.length;
@@ -40,13 +83,16 @@ public class Solution {
         return mainSum - sum;
     }
 
+	// basic brute force approach 
+	// 1. create a new array store all non zero
+	// 2. at last rest fill all as zeros
 	public static void moveZeroes(int[] nums) {
         
 		int j = 0;
 		int[] valueArray = new int[nums.length];
 		
 		for (int i : nums) {
-			if ( i != 0) {
+			if ( i != 0 ) {
 				valueArray[j] = i;
 				j++;
 			}
@@ -64,6 +110,34 @@ public class Solution {
 		
     }
 	
+	// optimal or better approach is to use 2 pointer methodology
+	public static void moveZeroesBetterOptimal(int[] nums) {
+		
+		for ( int i = 0; i < nums.length; i++ ) {
+			
+			if ( nums[i] == 0 ) {
+				int j = i + 1;
+				while ( j < nums.length && nums[j] == 0 ) {
+					
+					if ( j == nums.length - 1 ) {
+						return;
+					}
+					
+					j++;
+				}
+				swap(nums, i, j);
+			}
+			else {
+				continue;
+			}
+		}
+	}
+	
+	public static void swap(int[] nums, int x, int y) {
+		int temp = nums[x];
+		nums[x] = nums[y];
+		nums[y] = temp;
+	}
 	
 	public static int[] unionArray(int[] nums1, int[] nums2) {
 		
@@ -107,7 +181,7 @@ public class Solution {
 		return UnionList.stream().mapToInt(r->r).toArray();
     }
 	
-	int[] union(int nums1 [], int nums2 []) {
+	public static int[] union(int nums1 [], int nums2 []) {
 		Set<Integer> set = new HashSet<>();
         List<Integer> union = new ArrayList<>();
         
@@ -128,9 +202,7 @@ public class Solution {
         return union.stream().mapToInt(i->i).toArray();
 	}
 	
-	
-	
-public static int[] intersectionArray(int[] nums1, int[] nums2) {
+	public static int[] intersectionArray(int[] nums1, int[] nums2) {
 		
 		List<Integer> UnionList = new ArrayList<>();
 		int i = 0;
@@ -158,4 +230,5 @@ public static int[] intersectionArray(int[] nums1, int[] nums2) {
 		
 		return UnionList.stream().mapToInt(r->r).toArray();
     }
+
 }

@@ -3,7 +3,8 @@ package com.codingninjas.linkedlist;
 import java.util.Scanner;
 
 class ListNode {
-    int val;
+    
+	int val;
     ListNode next;
 
     ListNode(int data1) {
@@ -15,6 +16,7 @@ class ListNode {
         val = data1;
         next = next1;
     }
+    
 }
 
 class DoubleNode {
@@ -31,7 +33,7 @@ class DoubleNode {
 	
 }
 
-@SuppressWarnings({"resource"})
+
 public class LinkedClassUse {
 
 	public static Node<Integer> createLinkedList() {
@@ -251,6 +253,7 @@ public class LinkedClassUse {
 
 		Node<Integer> temp = head;
 		int i = 0;
+		
 		while (i < (index - 1)) {
 			temp = temp.next;
 			i++;
@@ -672,9 +675,7 @@ public class LinkedClassUse {
 	}
 
 	public static Node<Integer> reverseRecursively(Node<Integer> head) {
-		
-//		if ( head == null ) return null;
-		
+				
 		if ( head == null || head.next == null ) return head;
 		
 		Node<Integer> smallHead = reverseRecursively(head.next);
@@ -713,6 +714,7 @@ public class LinkedClassUse {
 		head.next = null;
 		answer = new DoubleNode(smallNode.head, head);
 		return answer;
+		
 	}
 	
 	public static Node<Integer> reverseRecursivelyBest(Node<Integer> head) {
@@ -721,6 +723,7 @@ public class LinkedClassUse {
 		
 		Node<Integer> smallHead = reverseRecursivelyBest(head.next);
 		Node<Integer> reversedTail = head.next;
+		
 		reversedTail.next = head;
 		head.next = null;
 		
@@ -1118,9 +1121,9 @@ public class LinkedClassUse {
 		
 		System.out.println();
 		
-		Node<Integer> finalOutput = swappingLL(head, 7);
-		System.out.println("final output");
-		printRecursively(finalOutput);
+//		Node<Integer> finalOutput = swappingLL(head, 7);
+//		System.out.println("final output");
+//		printRecursively(finalOutput);
 		
 		
 		
@@ -1162,7 +1165,136 @@ public class LinkedClassUse {
 //        System.out.println();
 //        Node<Integer> head2 = deleteTail(head);
 //        print(head2);
-
+		
+//		Node<Integer> answer = reverseKGroup(head, 2);
+//		printRecursively(answer);
+		
+//		Node<Integer> ansRev = reverseRecursivelyBest(head);
+//		printRecursively(ansRev);
+		
+		
+		Node<Integer> ans = rotateRight(head, 2);
+		printRecursively(ans);
 	}
+	
+	public static Node<Integer> reverseLinkedList(Node<Integer> head) {
+        
+		Node<Integer> temp = head;
+		Node<Integer> prev = null;
+        
+        while (temp != null) {
+            
+        	Node<Integer> front = temp.next;
+            temp.next = prev;
+
+            prev = temp;
+            temp = front;
+        }
+        
+        return prev;
+    }
+    
+    public static Node<Integer> getKthNode(Node<Integer> temp, int k) {
+        
+        k -= 1;
+        while (temp != null && k > 0) {
+            
+            k--;
+            temp = temp.next;
+        }
+
+        return temp;
+    }
+    
+    public static Node<Integer> reverseKGroup(Node<Integer> head, int k) {
+
+    	Node<Integer> temp = head;
+    	Node<Integer> prevLast = null;
+        
+        while ( temp != null ) {
+        
+        	Node<Integer> kThNode = getKthNode(temp, k);
+
+            if ( kThNode == null ) {
+            
+                if ( prevLast != null ) {
+                    prevLast.next = temp;
+                }
+            
+                break;
+            }
+            
+            Node<Integer> nextNode = kThNode.next;
+            kThNode.next = null;
+            reverseLinkedList(temp);
+            
+            if ( temp == head ) {
+                head = kThNode;
+            } 
+            
+            else {
+                prevLast.next = kThNode;
+            }
+
+            prevLast = temp;
+            temp = nextNode;
+        }
+        
+        return head;
+    }
+	
+    public static int sizeLL(Node<Integer> head) {
+    	
+    	if ( head == null ) return 0;
+    	
+    	Node<Integer> temp = head;
+    	int count = 0;
+    	
+    	while ( temp != null ) {
+    		count++;
+    		temp = temp.next;
+    	}
+    	
+    	return count;
+    }
+    
+	public static Node<Integer> rotateRight(Node<Integer> head, int k) {
+		
+		int size = sizeLL(head);
+		
+		if ( k >= size ) {
+			k = k % size;
+		}
+		
+		if ( k == 0 ) return head;
+		
+		// k is small then size 
+		int count = 1;
+		
+		Node<Integer> temp = head;
+		Node<Integer> temp2 = head;
+		
+		while ( temp != null ) {
+			
+			if ( count == (size - k) ) {
+				break;
+			}
+			
+			count++;
+			temp = temp.next;
+		}
+		
+		Node<Integer> mainHead = temp.next;
+		head = temp.next;
+		temp.next = null;
+		
+		while ( head.next != null ) {
+			head = head.next;
+		}
+		
+		head.next = temp2;
+		
+		return mainHead;
+    }
 
 }

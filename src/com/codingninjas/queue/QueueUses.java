@@ -9,8 +9,9 @@ public class QueueUses {
 		
 //		 queueUsingArray();
 //		 queueUsingLL();
-//		 queueUsingTwoStack();
+		 queueUsingTwoStack();
 	}
+	
 	
 	private static void queueUsingTwoStack() throws QueueEmptyException {
 		
@@ -21,17 +22,17 @@ public class QueueUses {
 		queue.enQueue(40);
 		queue.enQueue(50);
 		
-		System.out.println(queue.size);
+		System.out.println(queue.size());
 		System.out.println(queue.isEmpty());
 		System.out.println(queue.deQueue());
-		queue.printStack1();
+		queue.print();
 		
 		queue.enQueue(60);
-		System.out.println(queue.size);
-		queue.printStack1();
+		System.out.println(queue.size());
+		queue.print();
 		
 		System.out.println(queue.deQueue());
-		queue.printStack1();
+		queue.print();
 		
 	}
 
@@ -59,6 +60,11 @@ public class QueueUses {
 		queue.enQueue(30);
 		queue.enQueue(40);
 		queue.enQueue(50);
+		queue.enQueue(60);
+		queue.enQueue(70);
+		queue.enQueue(80);
+		queue.enQueue(90);
+		queue.enQueue(100);
 		queue.enQueue(60);
 		System.out.println(queue.front());
 		queue.print();

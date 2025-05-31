@@ -2,13 +2,29 @@ package com.codingninjas.treesbinarytrees;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import com.codingninjas.stack.StackEmptyException;
 import com.codingninjas.stack.StackUsingLL;
+
+class Pair1 {
+	BinaryTreeNode<Integer> tree;
+    int index;
+
+    Pair1(BinaryTreeNode<Integer> root, int indx) {
+        this.tree = root;
+        this.index =indx;
+    }
+}
 
 @SuppressWarnings({"resource", "unused"})
 public class BinaryTreeUse {
@@ -30,253 +46,622 @@ public class BinaryTreeUse {
 		
 		//3
 		BinaryTreeNode<Integer> root = takeInputLevelWise();
-		System.out.print("root : ");
-		printBinaryTree(root);
-		System.out.println();
-		System.out.println();
+//		System.out.print("root : ");
+//		printBinaryTree(root);
+//		System.out.println();
+//		System.out.println();
 		System.out.println("printBinaryTreeBest : ");
 		printBinaryTreeBest(root);
+//		1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
 		
-		//4
-		System.out.println();
-		int n = numberOfNodes(root);
-		System.out.println("number of Nodes " + n);
-		
-		//5
-//		1 2 3 4 5 6 7 -1 -1 -1 -1 8 -1 -1 -1 -1 -1
-		System.out.println();
-		int ln = nodeWithLargestData(root);
-		System.out.println("largest Node is " + ln);
-
-		//6
-		System.out.println();
-		int maximumHeight = heightOftheBinaryTree(root);
-		System.out.println("height of root node is : " + maximumHeight);
-		
-		//7
-		System.out.println();
-		int numOfLeaf = numberOfLeafNodes(root);
-		System.out.println("number of leaf nodes are : " + numOfLeaf);
-		
-		//8
-		System.out.println();
-		int k = 2;
-		System.out.print("k : "+ k +" KDepthNodes : ");
-		KDepthNodes(root, k);
-		System.out.println();
-		
-		//9
-		//print pre-order
-		System.out.println();
-		System.out.print("Pre-order : ");
-		preOrder(root);
-						
-		// print post-order
-		System.out.println();
-		System.out.print("Post-order : ");
-		postOrder(root);
-		
-		//10
+//		//4
 //		System.out.println();
-//		System.out.print("removeLeafNode : ");
-//		removeLeafNode(root);
-//		printBinaryTreeBest(root);
-		
-		//11
-		System.out.println();
-		mirrorBinaryTree(root);
-		System.out.print("mirrorBinaryTree : ");
-		printBinaryTreeBest(root);
-		
-		//12
-		System.out.println();
-		boolean b = isBalanced(root);
-		System.out.println("is balanced : " + b);
-		
-		//13
-		System.out.println();
-		boolean bb = isBalancedBetterCall(root);
-		System.out.println("is balanced better : " + bb);
-		
-		//14
-		System.out.println();
-		int diameter = diameter(root);
-		System.out.println("diameter of root is : " + diameter);
-		
-		System.out.println();
-		Pair<Integer, Integer> daimeterHeight = heightDiameter(root);
-		System.out.println("diameter of root best : " + daimeterHeight.diameter);
-		
-		//15
-		System.out.println();
-		int[] preorder = {1,2,4,5,3,6,7};
-		int[] inorder = {4,2,5,1,6,3,7};	
-		BinaryTreeNode<Integer> result = createBinaryTreeCall(preorder, inorder);
-		System.out.print("Given in-order And pre-order tree : ");
-		printBinaryTreeBest(result);
-		
-		//16
-//		System.out.println();
-//		createAndInsertDuplicate(root);
-//		System.out.println("duplicateLeft Tree : ");
-//		printBinaryTreeBest(root);
-
-		//17
-		System.out.println(); 
-		int[] resultArray = maxiAndMini(root);
-		
-		System.out.print("maxiAndMini : ");
-		for (int i : resultArray) {
-			System.out.print(i + " ");
-		}
-		
-		//18
-		System.out.println();
-		System.out.println();
-		System.out.print("printLevelWise : ");
-		printLevelWise(root, 0);
-		
-		System.out.println();
-		System.out.println();
-		System.out.println("printLevelWiseBest : ");
-		printLevelWiseBest(root);
-		
-		//19
-		System.out.println();
-		System.out.println();
-		boolean i = hasPathSum(root, 12);
-		System.out.print("hasPathSum : ");
-		System.out.println(i);
-		
-		//2
-		System.out.print("printRootToLeaf : ");
-		printRootToLeaf(root, 12, "");
-		System.out.println();
-		
-		//21
-		System.out.println();
-		int summ = sumNumbers(root, true, 0);
-		System.out.print("sumNumbers : ");
-		System.out.println(summ);
-		
-		//22
-		System.out.println();
-		ArrayList<Integer> ans = new ArrayList<Integer>();
-		Boolean nn = nodeToRootPath(root, 5, ans);
-		System.out.println("node is present : "+ nn);
-		System.out.print("nodeToRootPath : ");
-		for (Integer integer : ans) {
-			System.out.print(integer + " ");
-		}
-		
-		//23
-		System.out.println();
-		System.out.println();
-		ArrayList<BinaryTreeNode<Integer>> answer = new ArrayList<BinaryTreeNode<Integer>>();
-		BinaryTreeNode<Integer> element = new BinaryTreeNode<Integer>(5);
-		Boolean mn = nodeToRootPathReturnsBinaryNode(root, element, answer);
-		System.out.println("node is present : "+ mn);
-		System.out.print("nodeToRootPath : ");
-		for (BinaryTreeNode<Integer> integer : answer) {
-			System.out.print(integer.data + " ");
-		}
-		
-		//24
-		// 1.node to root 
-		// 2.k depth with previous blocker
-		System.out.println();
-		
-		//25
-		// 3: k distance from given node
-		System.out.println();
-		BinaryTreeNode<Integer> data = new BinaryTreeNode<Integer>(5);
-		int kk = 2;
-		System.out.print("k distance nodes : ");
-		List<Integer> finalAnswer = kDistance(root, data, kk);
-		for (Integer integer : finalAnswer) {
-			System.out.print(integer +" ");
-		}
-		
-		//26
-		// sum tree
-		//sumNumber failing in code 360
-//		System.out.println();
-//		System.out.println();
-//		int sum = sumNumbers(root);
-//		System.out.println("Sum Root to Leaf Numbers : " + sum);
-		
-		//27 
-		// Done: inorder and postorder to tree
-		
-		//28
-		
-		//29
-		System.out.println();
-		System.out.print("rootToElementNodePath : " );
-		ArrayList<Integer> ress = rootToElementReturnArrayList(root, 6);
-		System.out.println(ress);
-		
-		//30
-		System.out.println();
-		List<List<Integer>> answer1 = levelWiseBestReturnListInteger(root);
-		System.out.println("list of list of level wise : " + answer1);
-		
-		//31
-		//LCA of Binary Tree
-//		int x = 5;
-//		int y = 1;
-//		int lca = lcaOfBinaryTree(root, x, y);
-//		System.out.println();
-//		System.out.println("LCA : " + lca);
-		
-		//32
-		//LCA of Binary Tree
-//		ArrayList<BinaryTreeNode<Integer>> xPath = new ArrayList<BinaryTreeNode<Integer>>();
-//		BinaryTreeNode<Integer> xx = new BinaryTreeNode<Integer>(-2);
-//		BinaryTreeNode<Integer> yy = new BinaryTreeNode<Integer>(8);
-//		BinaryTreeNode<Integer> lca2 = lcaOfBinaryTreeNode(root, xx, yy);
-//		System.out.println();
-//		System.out.println("LCA : " + lca2.data);
+//		int n = numberOfNodes(root);
+//		System.out.println("number of Nodes " + n);
 //		
-//		nodeToRootPathReturnsBinaryNode(root, xx, xPath);
+//		//5
+////		1 2 3 4 5 6 7 -1 -1 -1 -1 8 -1 -1 -1 -1 -1
+//		System.out.println();
+//		int ln = nodeWithLargestData(root);
+//		System.out.println("largest Node is " + ln);
+//
+//		//6
+//		System.out.println();
+//		int maximumHeight = heightOftheBinaryTree(root);
+//		System.out.println("height of root node is : " + maximumHeight);
 //		
-//		System.out.print("node to root : ");
-//		for (BinaryTreeNode<Integer> binaryTreeNode : xPath) {
-//			System.out.print(binaryTreeNode.data + " ");
+//		//7
+//		System.out.println();
+//		int numOfLeaf = numberOfLeafNodes(root);
+//		System.out.println("number of leaf nodes are : " + numOfLeaf);
+//		
+//		//8
+//		System.out.println();
+//		int k = 2;
+//		System.out.print("k : "+ k +" KDepthNodes : ");
+//		KDepthNodes(root, k);
+//		System.out.println();
+//		
+//		//9
+//		//print pre-order
+//		System.out.println();
+//		System.out.print("Pre-order : ");
+//		preOrder(root);
+//						
+//		// print post-order
+//		System.out.println();
+//		System.out.print("Post-order : ");
+//		postOrder(root);
+//		
+//		//10
+////		System.out.println();
+////		System.out.print("removeLeafNode : ");
+////		removeLeafNode(root);
+////		printBinaryTreeBest(root);
+//		
+//		//11
+//		System.out.println();
+//		mirrorBinaryTree(root);
+//		System.out.print("mirrorBinaryTree : ");
+//		printBinaryTreeBest(root);
+//		
+//		//12
+//		System.out.println();
+//		boolean b = isBalanced(root);
+//		System.out.println("is balanced : " + b);
+//		
+//		//13
+//		System.out.println();
+//		boolean bb = isBalancedBetterCall(root);
+//		System.out.println("is balanced better : " + bb);
+//		
+//		//14
+//		System.out.println();
+//		int diameter = diameter(root);
+//		System.out.println("diameter of root is : " + diameter);
+//		
+//		System.out.println();
+//		Pair<Integer, Integer> daimeterHeight = heightDiameter(root);
+//		System.out.println("diameter of root best : " + daimeterHeight.diameter);
+//		
+//		//15
+//		System.out.println();
+//		int[] preorder = {1,2,4,5,3,6,7};
+//		int[] inorder = {4,2,5,1,6,3,7};	
+//		BinaryTreeNode<Integer> result = createBinaryTreeCall(preorder, inorder);
+//		System.out.print("Given in-order And pre-order tree : ");
+//		printBinaryTreeBest(result);
+//		
+//		//16
+////		System.out.println();
+////		createAndInsertDuplicate(root);
+////		System.out.println("duplicateLeft Tree : ");
+////		printBinaryTreeBest(root);
+//
+//		//17
+//		System.out.println(); 
+//		int[] resultArray = maxiAndMini(root);
+//		
+//		System.out.print("maxiAndMini : ");
+//		for (int i : resultArray) {
+//			System.out.print(i + " ");
+//		}
+//		
+//		//18
+//		System.out.println();
+//		System.out.println();
+//		System.out.print("printLevelWise : ");
+//		printLevelWise(root, 0);
+//		
+//		System.out.println();
+//		System.out.println();
+//		System.out.println("printLevelWiseBest : ");
+//		printLevelWiseBest(root);
+//		
+//		//19
+//		System.out.println();
+//		System.out.println();
+//		boolean i = hasPathSum(root, 12);
+//		System.out.print("hasPathSum : ");
+//		System.out.println(i);
+//		
+//		//2
+//		System.out.print("printRootToLeaf : ");
+//		printRootToLeaf(root, 12, "");
+//		System.out.println();
+//		
+//		//21
+//		System.out.println();
+//		int summ = sumNumbers(root, true, 0);
+//		System.out.print("sumNumbers : ");
+//		System.out.println(summ);
+//		
+//		//22
+//		System.out.println();
+//		ArrayList<Integer> ans = new ArrayList<Integer>();
+//		Boolean nn = nodeToRootPath(root, 5, ans);
+//		System.out.println("node is present : "+ nn);
+//		System.out.print("nodeToRootPath : ");
+//		for (Integer integer : ans) {
+//			System.out.print(integer + " ");
+//		}
+//		
+//		//23
+//		System.out.println();
+//		System.out.println();
+//		ArrayList<BinaryTreeNode<Integer>> answer = new ArrayList<BinaryTreeNode<Integer>>();
+//		BinaryTreeNode<Integer> element = new BinaryTreeNode<Integer>(5);
+//		Boolean mn = nodeToRootPathReturnsBinaryNode(root, element, answer);
+//		System.out.println("node is present : "+ mn);
+//		System.out.print("nodeToRootPath : ");
+//		for (BinaryTreeNode<Integer> integer : answer) {
+//			System.out.print(integer.data + " ");
+//		}
+//		
+//		//24
+//		// 1.node to root 
+//		// 2.k depth with previous blocker
+//		System.out.println();
+//		
+//		//25
+//		// 3: k distance from given node
+//		System.out.println();
+//		BinaryTreeNode<Integer> data = new BinaryTreeNode<Integer>(5);
+//		int kk = 2;
+//		System.out.print("k distance nodes : ");
+//		List<Integer> finalAnswer = kDistance(root, data, kk);
+//		for (Integer integer : finalAnswer) {
+//			System.out.print(integer +" ");
+//		}
+//		
+//		//26
+//		// sum tree
+//		//sumNumber failing in code 360
+////		System.out.println();
+////		System.out.println();
+////		int sum = sumNumbers(root);
+////		System.out.println("Sum Root to Leaf Numbers : " + sum);
+//		
+//		//27 
+//		// Done: inorder and postorder to tree
+//		
+//		//28
+//		
+//		//29
+//		System.out.println();
+//		System.out.print("rootToElementNodePath : " );
+//		ArrayList<Integer> ress = rootToElementReturnArrayList(root, 6);
+//		System.out.println(ress);
+//		
+//		//30
+//		System.out.println();
+//		List<List<Integer>> answer1 = levelWiseBestReturnListInteger(root);
+//		System.out.println("list of list of level wise : " + answer1);
+//		
+//		//31
+//		//LCA of Binary Tree
+////		int x = 5;
+////		int y = 1;
+////		int lca = lcaOfBinaryTree(root, x, y);
+////		System.out.println();
+////		System.out.println("LCA : " + lca);
+//		
+//		//32
+//		//LCA of Binary Tree
+////		ArrayList<BinaryTreeNode<Integer>> xPath = new ArrayList<BinaryTreeNode<Integer>>();
+////		BinaryTreeNode<Integer> xx = new BinaryTreeNode<Integer>(-2);
+////		BinaryTreeNode<Integer> yy = new BinaryTreeNode<Integer>(8);
+////		BinaryTreeNode<Integer> lca2 = lcaOfBinaryTreeNode(root, xx, yy);
+////		System.out.println();
+////		System.out.println("LCA : " + lca2.data);
+////		
+////		nodeToRootPathReturnsBinaryNode(root, xx, xPath);
+////		
+////		System.out.print("node to root : ");
+////		for (BinaryTreeNode<Integer> binaryTreeNode : xPath) {
+////			System.out.print(binaryTreeNode.data + " ");
+////		}
+//		
+//		
+//		//33 
+//		// iterativly inorder preorder and postorder
+//		System.out.println();
+//		printInorderUsingIterative(root);
+//		
+//		//34
+//		// using ArrayList
+//		
+//		
+//		//35
+//		// using Stack
+//		System.out.println("bestApproachReturnArray : ");
+//		ArrayList<ArrayList<Integer>> arrrr = bestApproachReturnArray(root, 19);
+//		for (ArrayList<Integer> arrayList : arrrr) {
+//			ArrayList<Integer> array = arrayList;
+//			for (Integer arrayList2 : array) {
+//				System.out.print(array + " ");
+//			}
+//			System.out.println();
+//		}
+//		
+//		
+//		//36
+//		//symmetric
+//		boolean s = returnSymmetric(root);
+//		System.out.println();
+//		System.out.println("symmetric : " + s);
+		
+//		System.out.println("Level order : ");
+//		List<List<Integer>> answer = new ArrayList<List<Integer>>();
+//		levelOrder(root);
+//		
+////		1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
+//		for (List<Integer> list : answer) {
+//			System.out.println(list);
+//			System.out.println();
+//		}
+//		
+//		int g = maxPathSum(root);
+//		System.out.println(g);
+//		List<List<Integer>> answer = zigzagLevelOrder(root);
+//		
+//		for (List<Integer> list : answer) {
+//			System.out.println(list);
 //		}
 		
+//		List<Integer> answer = boundary(root);
+//		for (Integer integer : answer) {
+//			System.out.println(integer);
+//		}
 		
-		//33 
-		// iterativly inorder preorder and postorder
-		System.out.println();
-		printInorderUsingIterative(root);
+//		Map<Integer, ArrayList> map = new HashMap<>();
+//		List<List<Integer>> answer = verticalTraversal(root, 0, 0, map);
+//		
+//		for (List<Integer> list : answer) {
+//			System.out.println(list);
+//		}
 		
-		//34
-		// using ArrayList
+//		List<Integer> answer = topView(root);
+//		for (Integer integer : answer) {
+//			System.out.println(integer);
+//		}
 		
+//		List<List<Integer>> answer = allRootToLeaf(root);
+//		
+////		1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
+//		for (List<Integer> list : answer) {
+//			System.out.println(list);
+//		}
+	
+		String s = serialize(root);
+		System.out.println(s);
 		
-		//35
-		// using Stack
-		System.out.println("bestApproachReturnArray : ");
-		ArrayList<ArrayList<Integer>> arrrr = bestApproachReturnArray(root, 19);
-		for (ArrayList<Integer> arrayList : arrrr) {
-			ArrayList<Integer> array = arrayList;
-			for (Integer arrayList2 : array) {
-				System.out.print(array + " ");
-			}
-			System.out.println();
-		}
-		
-		
-		//36
-		//symmetric
-		boolean s = returnSymmetric(root);
-		System.out.println();
-		System.out.println("symmetric : " + s);
-
+		BinaryTreeNode<Integer> resut = takeInputLevelWiseString(s);
+		printLevelWiseBest(resut);
 	}
 	
-	private static boolean returnSymmetric(BinaryTreeNode<Integer> root) {
+	
+	public static String serialize(BinaryTreeNode<Integer> root) {
+        String s = "";
+
+        if ( root == null ) return s+"#";
+
+        s = serialize2(root, s);
+        s = s.substring(0, s.length() - 1);
+        System.out.println(s);
+        return s;
+    }
+//	1 2 3 -1 -1 4 6 -1 -1 -1 -1
+    public static String serialize2(BinaryTreeNode<Integer> root, String s) {
+        
+        Queue<BinaryTreeNode<Integer>> treeNodeQueue = new LinkedList<>();
+        treeNodeQueue.add(root);
+
+        while ( !treeNodeQueue.isEmpty() ) {
+            
+            int size = treeNodeQueue.size();
+            
+            for (int i = 0; i < size; i++) {
+
+            		BinaryTreeNode<Integer> node = treeNodeQueue.poll();
+
+                if ( node == null ) {
+                		s = s + "# ";
+                		continue;
+                } else {
+                		s = s + node.data + " ";
+                }
+                
+                if ( node.left != null ) {
+                		treeNodeQueue.add(node.left);
+                } else {
+                		treeNodeQueue.add(null);
+                }
+                
+
+                if ( node.right != null ) {
+                		treeNodeQueue.add(node.right);
+                } else {
+                		treeNodeQueue.add(null);
+                }
+                
+
+            }
+            
+        }
+        
+		return s;
+    }
+
+	
+	public static List<List<Integer>> allRootToLeaf(BinaryTreeNode<Integer> root) {
+        //your code goes here
+		if ( root == null ) return new ArrayList<>();
+		
+		List<List<Integer>> answer = new ArrayList<List<Integer>>();
+		List<Integer> ans = new ArrayList<Integer>();
+		allRootToLeaf(root, answer, ans);
+		return answer;
+    }
+	
+//	1 2 3 4 5 -1 -1 -1 -1 -1 -1
+	public static void allRootToLeaf(BinaryTreeNode<Integer> root, List<List<Integer>> answer, List<Integer> ans) {
+        //your code goes here
+
+		List<Integer> curr = new ArrayList<Integer>();
+		curr.addAll(ans);
+		curr.add(root.data);
+		
+		if ( root.left == null && root.right == null ) {
+			answer.add(new ArrayList<>(curr));
+			return;
+		}
+		
+		if ( root.left != null ) {
+			allRootToLeaf(root.left, answer, curr);
+		}
+		
+		if ( root.right != null ) {
+			allRootToLeaf(root.right, answer, curr);
+		}
+
+    }
+	
+	public List<Integer> bottomView(TreeNode root) {
+        //your code goes here
+        if ( root == null ) return new ArrayList<>();
+        List<Integer> ans = new ArrayList<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        return ans;
+    }
+	
+	public static List<Integer> topView(BinaryTreeNode<Integer> root) {
+        //your code goes here
+        if ( root == null ) return new ArrayList<>();
+
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        Queue<Pair1> treeNodeQueue = new LinkedList<>();
+        int index = 0;
+        treeNodeQueue.add(new Pair1(root, index));
+        
+        if ( !map.containsKey(index) ) {
+            map.put(index, root.data);
+        }
+
+        while ( !treeNodeQueue.isEmpty() ) {
+            
+            int size = treeNodeQueue.size();
+            for (int i = 0; i < size; i++) {
+                Pair1 node = treeNodeQueue.poll();
+                int curI = node.index;
+                
+                if ( !map.containsKey(curI) ) {
+                	map.put(curI, node.tree.data);
+                }
+
+                if (node.tree.left != null) {
+                    treeNodeQueue.add(new Pair1(node.tree.left, curI - 1));
+                }
+
+                if (node.tree.right != null) {
+                    treeNodeQueue.add(new Pair1(node.tree.right, curI + 1));
+                }
+                
+            }
+            
+        }
+
+        List<Integer> answer = new ArrayList<>();
+        
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {    
+            answer.add(entry.getValue());
+        }
+
+        return answer;
+
+    }
+	
+	// 1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
+	public static List<List<Integer>> verticalTraversal(BinaryTreeNode<Integer> root, int index, int level,
+			@SuppressWarnings("rawtypes") Map<Integer, ArrayList> hashMap) {
+        
+		//your code goes here
+		if ( root == null ) return new ArrayList<>();
+		
+		if (hashMap.containsKey(index)) {
+			@SuppressWarnings("unchecked")
+			ArrayList<Integer> curr = hashMap.get(index);
+			curr.add(root.data);
+			hashMap.put(index, curr);
+        } 
+        else {
+         	ArrayList<Integer> curr = new ArrayList<Integer>();
+         	curr.add(root.data);
+         	hashMap.put(index, curr);
+        }
+		
+		// left call
+		if ( root.left != null ) {
+			verticalTraversal(root.left, index - 1, level + 1, hashMap);
+		}
+		
+		// right call
+		if ( root.right != null ) {
+			verticalTraversal(root.right, index + 1, level + 1, hashMap);
+		}
+		
+		@SuppressWarnings("rawtypes")
+		Map<Integer, ArrayList> sortedMap = hashMap.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey()) // Sort by key
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey, Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+		
+		List<List<Integer>> answer = new ArrayList<List<Integer>>();
+		
+//		for (Map.Entry<Integer, ArrayList> entry : sortedMap.entrySet()) {
+//        	Collections.sort(entry.getValue());
+//			answer.add(entry.getValue());
+//        }
+		
+		return answer;
+    }
+	
+	
+	public static List<Integer> boundary(BinaryTreeNode<Integer> root) {
+        //your code goes here
+		if ( root == null ) return new ArrayList<Integer>();
+		
+		return null;
+    }
+	
+	
+	
+//	1 2 3 -1 4 8 5 -1 -1 -1 -1 -1 -1
+//	3 9 20 -1 -1 15 7 -1 -1 -1 -1
+	public static List<List<Integer>> zigzagLevelOrder(BinaryTreeNode<Integer> root) {
+        //your code goes here
+//		if ( root == null ) return null;
+//		
+//		List<List<Integer>> answer = new ArrayList<List<Integer>>();
+//		
+//		Stack<BinaryTreeNode<Integer>> stack = new Stack<>();
+//		stack.add(root);
+//		int flag = 0;
+//		BinaryTreeNode<Integer> currentRemoved = null;
+//		
+//		while ( !stack.isEmpty() ) {
+//			List<Integer> ans = new ArrayList<Integer>();
+//			Stack<BinaryTreeNode<Integer>> currentstack = new Stack<>();
+//			
+//			while ( !stack.isEmpty() ) {
+//				
+//				currentRemoved = stack.pop();
+//				ans.add(currentRemoved.data);
+//				
+//				if ( currentRemoved.left != null ) {
+//					currentstack.add(currentRemoved.left);
+//				}
+//				
+//				if ( currentRemoved.right != null ) {
+//					currentstack.add(currentRemoved.right);
+//				}
+//				
+//			}
+//			
+//			if ( flag == 0 ) {
+//				Collections.reverse(ans);
+//				answer.add(ans);
+//				flag = 1;
+//			} else {
+//				answer.add(ans);
+//				flag = 0;
+//			}
+//			
+//			stack = currentstack;
+//			
+//		}
+//		
+//		return answer;
+		
+		int flag = 1;
+		List<List<Integer>> answer = new ArrayList<List<Integer>>();
+		Queue<BinaryTreeNode<Integer>> treeNodeQueue = new LinkedList<>();
+        treeNodeQueue.add(root);
+        
+
+        while ( !treeNodeQueue.isEmpty() ) {
+            
+            int size = treeNodeQueue.size();
+            List<Integer> level = new ArrayList<>();
+            
+            for (int i = 0; i < size; i++) {
+
+                BinaryTreeNode<Integer> node = treeNodeQueue.poll();
+
+                level.add(node.data);
+                
+                
+                if (node.left != null) {
+                    treeNodeQueue.add(node.left);
+                }
+                if (node.right != null) {
+                    treeNodeQueue.add(node.right);
+                }
+            }
+            
+            if( flag == 0 ) {
+            	Collections.reverse(level);
+            	answer.add(level);
+            	flag = 1;
+            } else {
+            	answer.add(level);
+                flag = 0;
+            }
+            
+        }
+		return answer;
+        
+        
+    }
+	
+	//20 9 -10 -1 -1 15 7 -1 -1 -1 -1
+	//1 -94 -52 -1 37 -1 -1 -50 40 -1 -1 -1 -1
+	public static int maxPathSum(BinaryTreeNode<Integer> root) {
+        //your code goes here
+        if ( root == null ) {
+            return 0;
+        }
+
+        Pair<Integer, Integer> p = maxPathSum2(root);
+        return p.diameter;
+    }
+
+    public static Pair<Integer, Integer> maxPathSum2(BinaryTreeNode<Integer> root) {
+        
+    	if ( root == null ) {
+            return new Pair<>(0, 0);
+        }
+
+        Pair<Integer, Integer> leftSum = maxPathSum2(root.left);
+        
+        System.out.println("leftSum : " + leftSum.toString());
+        
+        Pair<Integer, Integer> rightSum = maxPathSum2(root.right);
+        
+        System.out.println("rightSum : " +rightSum.toString());
+//        leftSum.height + rightSum.height + root.data
+        Pair<Integer, Integer> pair = new Pair<>(Math.max(Math.max(leftSum.height, rightSum.height) ,Math.max(leftSum.diameter, Math.max(rightSum.diameter, leftSum.height + rightSum.height + root.data))),
+        		Math.max(leftSum.height, rightSum.height) + root.data);
+        Pair<Integer, Integer> pair2 = new Pair<>( Math.max(rightSum.height + root.data, Math.max(rightSum.height, Math.max(rightSum.diameter, rightSum.height + root.data))), 
+		Math.max(root.data, rightSum.height + root.data));
+        System.out.println("Pair : " + pair);
+        
+        return pair;
+    }
+	
+	public static boolean returnSymmetric(BinaryTreeNode<Integer> root) {
 		
 		if ( root == null ) {
 			return true;
@@ -1187,8 +1572,76 @@ public class BinaryTreeUse {
 			
 			}
 			
-		}	
+		}
+		
 	}
+	
+//	1 2 3 4 5 6 7 -1 -1 -1 -1 -1 -1 -1 -1
+	public static List<List<Integer>> levelOrder(BinaryTreeNode<Integer> root) {
+        //your code goes here
+        List<List<Integer>> answer = new ArrayList<>();
+        levelOrderTraversal(root, answer);
+        
+//        for (List<Integer> list : answer) {
+//			System.out.println(list);
+//		}
+        return answer;
+    }
+
+    public static void levelOrderTraversal(BinaryTreeNode<Integer> root, List<List<Integer>> answer) {
+
+        Queue<BinaryTreeNode<Integer>> treeNodeQueue = new LinkedList<>();
+        treeNodeQueue.add(root);
+        List<Integer> ans = new ArrayList<>();
+
+        while ( !treeNodeQueue.isEmpty() ) {
+
+            	BinaryTreeNode<Integer> treeNode = treeNodeQueue.poll();
+            	
+                ans.add(treeNode.data);
+
+                if (treeNode.left != null) {
+                    treeNodeQueue.add(treeNode.left);
+                }
+
+                if (treeNode.right != null) {
+                    treeNodeQueue.add(treeNode.right);
+                }
+
+            }
+
+            answer.add(ans);
+            ans = new ArrayList<>();
+
+    }
+    
+    public static void maxWidthOfBinaryTree(BinaryTreeNode<Integer> root) {
+
+        Queue<BinaryTreeNode<Integer>> treeNodeQueue = new LinkedList<>();
+        treeNodeQueue.add(root);
+        List<Integer> ans = new ArrayList<>();
+        int maximumWidth = Integer.MIN_VALUE;
+
+        while ( !treeNodeQueue.isEmpty() ) {
+
+            	BinaryTreeNode<Integer> treeNode = treeNodeQueue.poll();
+            	
+                ans.add(treeNode.data);
+
+                if (treeNode.left != null) {
+                    treeNodeQueue.add(treeNode.left);
+                }
+
+                if (treeNode.right != null) {
+                    treeNodeQueue.add(treeNode.right);
+                }
+
+            }
+
+            ans = new ArrayList<>();
+
+    }
+    
 	public static void printLevelWise(BinaryTreeNode<Integer> root, int k) {
 		
 		if ( root == null ) {
@@ -1593,8 +2046,50 @@ public class BinaryTreeUse {
 		System.out.println();
 		printBinaryTreeBest(root.left);
 		printBinaryTreeBest(root.right);
-		
 
+	}
+	
+	public static BinaryTreeNode<Integer> takeInputLevelWiseString(String s) {
+		
+		if ( s.length() == 0 ) return null;
+		
+		int i = 0;
+		
+		QueueUsingLL<BinaryTreeNode<Integer>> pendingNodes = new QueueUsingLL<BinaryTreeNode<Integer>>();
+		s = s.replaceAll("\\s+","");
+		String rootData = s.charAt(i) + "";
+		i++;
+		
+		if ( rootData.equals("#") ) {
+			return null;
+		}
+		
+		BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(Integer.parseInt(rootData));
+		pendingNodes.enQueue(root);
+		
+		while ( !pendingNodes.isEmpty() ) {
+			
+			BinaryTreeNode<Integer> front = pendingNodes.deQueue();
+			
+			String leftChild = s.charAt(i) + "";
+			i++;
+			if ( !leftChild.equals("#") ) {
+				BinaryTreeNode<Integer> left = new BinaryTreeNode<Integer>(Integer.parseInt(leftChild));
+				front.left = left;
+				pendingNodes.enQueue(left);
+			}
+			
+			String rightChild = s.charAt(i) + "";
+			i++;
+			if ( !rightChild.equals("#") ) {
+				BinaryTreeNode<Integer> right = new BinaryTreeNode<Integer>(Integer.parseInt(rightChild));
+				front.right = right;
+				pendingNodes.enQueue(right);
+			}
+			
+		}
+		
+		return root;
 	}
 	
 	public static BinaryTreeNode<Integer> takeInputLevelWise() {

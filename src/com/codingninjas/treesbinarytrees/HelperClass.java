@@ -37,6 +37,13 @@ class Pair<T, V> {
 		this.diameter = diameter;
 		this.height = height;
 	}
+
+	@Override
+	public String toString() {
+		return "Pair [diameter=" + diameter + ", height=" + height + "]";
+	}
+	
+	
 }
 
 class Pairr<T, V> {

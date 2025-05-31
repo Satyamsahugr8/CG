@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
-public class BalancedParenthesis {
+public class GenerateBalancedParenthesis {
 	
 	
 
     public static void main(String[] args) {
     	
-//    	ArrayList<String> ans = createBalancedParenthesis(3);
-//    	for (String integer : ans) {
-//			System.out.println(integer);
-//		}
+    	int n = 3;
+    	ArrayList<String> ans = createBalancedParenthesis(n);
+    	for (String integer : ans) {
+			System.out.println(integer);
+		}
+    	
+    	System.out.println();
     	
     	ArrayList<String> answer = new ArrayList<String>();
-    	createBalancedParenthesisUsingTree(4, 0, 0, "", answer);
+    	createBalancedParenthesisUsingTree(3, 0, 0, "", answer);
     	for (String integer : answer) {
 			System.out.println(integer);
 		}

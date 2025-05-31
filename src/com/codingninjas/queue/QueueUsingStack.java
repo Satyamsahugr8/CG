@@ -4,75 +4,62 @@ import java.util.Stack;
 
 public class QueueUsingStack {
 
-	Stack<Integer> stack1 = new Stack<Integer>();
-	Stack<Integer> stack2  = new Stack<Integer>();
-	int size;
+	Stack<Integer> stack1;
+	Stack<Integer> stack2;
 	
 
 	public QueueUsingStack() {
-		super();
-		size = 0;
+		stack1 = new Stack<Integer>();
+		stack2  = new Stack<Integer>();
 	}
 
 	public void enQueue(int element) {
+		
+		if( !stack1.isEmpty() ) {
+			while ( !stack1.isEmpty() ) {
+				stack2.add(stack1.pop());
+			}	
+		}
+		
 		stack1.add(element);
-		size++;
+		
+		while ( !stack2.isEmpty() ) {
+			stack1.add(stack2.pop());
+		}
+		
+		
 	}
 	
 	public Integer deQueue() throws QueueEmptyException {
 		
-		if ( !stack1.isEmpty() ) {
-			
-			int size = stack1.size();
-			for (int i = 1; i < size; i++) {
-				stack2.add(stack1.pop());
-			}
-			
-			//last element
-			int store = stack1.pop();
-				
-			while ( !stack2.isEmpty() ) {
-				stack1.add(stack2.pop());
-			}
-			
-			size--;
-			return store;
+		if ( stack1.isEmpty() ) {
+			return -1;
 		}
 		
-		throw new QueueEmptyException();
-		
+		return stack1.pop();
 	}
 	
 	public int size() {
-		return size;
+		
+		if ( stack1.size() == 0 ) return -1;
+		return stack1.size();
 	}
 	
 	public boolean isEmpty() {
-		return size == 0;
+		return size() == 0;
 	}
 	
 	public Integer front() throws QueueEmptyException {
 		
-		if ( !stack1.isEmpty() ) {
-			
-			for (int i = 1; i < stack1.size(); i++) {
-				stack2.add(stack1.pop());
-			}
-			
-			return stack1.peek();
+		if ( stack1.isEmpty() ) {
+			return -1;
 		}
 		
-		throw new QueueEmptyException();
+		return stack1.peek();
 	}
 
-	void printStack1() {
+	void print() {
 		System.out.println(stack1);
 	}
 
-	void printStack2() {
-		System.out.println(stack2);
-	}
-
-
-	
 }

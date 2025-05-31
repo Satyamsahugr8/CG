@@ -1,4 +1,5 @@
 package com.codingninjas.stack;
+
 public class Node<T> {
     
 	T data;
@@ -13,6 +14,5 @@ public class Node<T> {
         this.data = data2;
         this.next = next;
     }
-
 
 }

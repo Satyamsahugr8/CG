@@ -14,9 +14,11 @@ public class StackUsingArray {
 		topIndex = -1;
 	}
 	
-//	public StackUsingArray() {
-//		this(1000);
-//	}
+	public StackUsingArray(int capacity) {
+		data = new int[capacity];
+//		maximum = size;
+		topIndex = -1;
+	}
 
 //	public void push(int s) throws StackFullException {
 //		
@@ -84,7 +86,5 @@ public class StackUsingArray {
 		System.out.print("]");
 		System.out.println();
 	}
-	
-	
 
 }

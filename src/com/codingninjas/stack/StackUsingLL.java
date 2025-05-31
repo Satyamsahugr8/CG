@@ -30,9 +30,16 @@ public class StackUsingLL<T> {
 	
 	public T pop() {
 		Node<T> temp = head;
-		head = head.next;
+		
+		if (temp == null) {  // Check if queue is empty
+            return temp.data;
+		}
+
+        T data = temp.data;
+		temp = temp.next;
 		size--;
-		return temp.data;
+		
+		return data;
 	}
 	
 	public void push(T element) {
