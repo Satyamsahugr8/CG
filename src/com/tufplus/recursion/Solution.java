@@ -13,7 +13,7 @@ public class Solution {
 
     public static int[] recursionMethod(int[] nums, int i, int j) {
         //base condition
-        if (i>=j) {
+        if ( i >= j ) {
             return nums;
         }
 

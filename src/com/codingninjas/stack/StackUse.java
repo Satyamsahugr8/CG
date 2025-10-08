@@ -12,13 +12,13 @@ public class StackUse {
 //		stackUsingArray();
 //		stackUsingLL();
 //		System.out.println(balanceOutParenthesis("{()}"));
-//		reverseStackProblem();
+		reverseStackProblem();
 		
 //		bracketRedundantProblem2();
 //		boolean s = canBeValid(")(","00");
 //		System.out.println(s);
 		
-		stackusingQueue();
+//		stackusingQueue();
 		
 	}
 	
@@ -49,10 +49,12 @@ public class StackUse {
 		stack.add(4);
 		stack.add(5);
 		System.out.println(stack);
+		
 		Stack<Integer> helper = new Stack<Integer>();
 		Stack<Integer> result = reverseStackUsingHelperStack(stack, helper);
 		System.out.println(result);
 		System.out.println(result.pop());
+		System.out.println(result);
 		
 	}
 	

@@ -3,7 +3,6 @@ package com.codingninjas.string;
 public class CountPallindrone {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int gg = countNumberOfPalindromeWords("refer aios      atv we sbdfcdkb ata i   u sdhsd oo qwenr xsd fgf");
 		System.out.println(gg);
 	}

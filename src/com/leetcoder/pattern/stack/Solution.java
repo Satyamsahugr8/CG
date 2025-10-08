@@ -3,6 +3,66 @@ package com.leetcoder.pattern.stack;
 import java.util.Arrays;
 import java.util.Stack;
 
+public class Solution {
+    public long subArrayRanges(int[] nums) {
+        return sumSubarrayMins(nums);
+    }
+
+    // public int sumSubarrayMaxs(int[] arr) {
+
+    // }
+    
+    public static void main(String[] args) {
+		Solution s = new Solution();
+		int[] arr = {1, 2, 3};
+		long ans = s.sumSubarrayMins(arr);
+		System.out.println(ans);
+	}
+
+    public long sumSubarrayMins(int[] arr) {
+        
+        NextGreaterElement n = new NextGreaterElement();
+		
+		int [] minR = n.nextSmallestElementRightBest(arr);
+		int [] minL = n.nextSmallestElementLeftBest(arr);
+
+        int [] maxR = n.nextLargerElementRightBest(arr);
+		int [] maxL = n.nextLargerElementLeftBest(arr);
+		
+		System.out.println(Arrays.toString(minR));
+		System.out.println(Arrays.toString(minL));
+		System.out.println(Arrays.toString(maxR));
+		System.out.println(Arrays.toString(maxL));
+		
+		int mod = (int)1e9 + 7; // Mod value
+        
+        // To store the sum
+        long sum = 0;
+        long summ = 0;
+		
+		for (int i = 0; i < arr.length; i++) {
+			
+			int left = i - minL[i];
+            int leftt = i - maxL[i];
+			int right = minR[i] - i;
+            int rightt = maxR[i] - i;
+			
+			long freq = left * right * 1L;
+            long freqq = leftt * rightt * 1L;
+            
+            // Contribution due to current element 
+            long val = ((freq * arr[i]) % mod);
+            long vall = ((freqq * arr[i]) % mod);
+            
+            // Updating the sum
+            sum = (sum + val) % mod;
+            summ = (summ + vall) % mod;
+		}
+
+		return summ - sum;
+    }
+}
+
 /**
  * NextGreaterElement.java
  * 
@@ -11,21 +71,22 @@ import java.util.Stack;
  * @author satyamsahu
  * @since 06-Jul-2025
  */
-public class NextGreaterElement {
+class NextGreaterElemente {
 
-	public static void main(String[] args) {
-
-		NextGreaterElement a = new NextGreaterElement();
-
-//		int n = arr;
-		int[] arr = { 2, 10, 12, 1, 11 };
-		int[] ans = a.nextLargerElementRightBest(arr);
-		int[] anss = a.nextLargerElementLeftBest(arr);
-		
-		System.out.println(Arrays.toString(ans));
-		System.out.println(Arrays.toString(anss));
-		
-	}
+//	public static void main(String[] args) {
+//
+//		NextGreaterElement a = new NextGreaterElement();
+//
+////		int n = arr;
+//		int[] arr = { 2, 10, 12, 1, 11 };
+////		int[] ans = a.nextLargerElement(arr);
+//		int[] ans = a.nextSmallestElementRightBest(arr);
+//
+//		System.out.println("The next greater elements are: ");
+//		for (int i = 0; i < arr.length; i++) {
+//			System.out.print(ans[i] + " ");
+//		}
+//	}
 
 	// use Stack
 	public int[] nextLargerElementRightBest(int[] arr) {
@@ -37,7 +98,7 @@ public class NextGreaterElement {
 
 		for (int i = arr.length - 1; i >= 0; i--) {
 			while (!stack.isEmpty()) {
-				if (arr[i] <= stack.peek()) {
+				if (arr[i] < stack.peek()) {
 					answer[i] = stacki.peek();
 					stack.add(arr[i]);
 					stacki.add(i);
@@ -88,7 +149,7 @@ public class NextGreaterElement {
 		return answer;
 	}
 
-	public int[] nextSmallestElementRightBest(int[] arr) {
+	public int[] nextSmallesrElementRightBest(int[] arr) {
 
 		int n = arr.length;
 		int[] answer = new int[n];
@@ -107,7 +168,7 @@ public class NextGreaterElement {
 					stacki.pop();
 				}
 			}
-			// check for left last one
+			// check for lefted last one
 			if (stack.isEmpty()) {
 				answer[i] = n;
 				stack.add(arr[i]);
@@ -170,6 +231,8 @@ public class NextGreaterElement {
 				// Getting the hypothetical index
 				// this is good
 				int ind = (j + i) % n;
+
+				System.out.println(" i : " + i + " j : " + j + " ind : " + ind);
 
 				// If the next greater element is found
 				if (arr[ind] > currEle) {

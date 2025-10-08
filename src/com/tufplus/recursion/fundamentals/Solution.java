@@ -8,11 +8,11 @@ public class Solution {
 	
 	public static void main(String[] args) {
 		
-		System.out.println( generateParenthesis(1));
+		System.out.println(generateParenthesis(4));
 		
 	}
 	
-    public static List<String> generateParenthesis(int n) {
+	public static List<String> generateParenthesis(int n) {
     	
     	List<String> listOfString = new ArrayList<String>();
     	return recursion(n , 0, 0, listOfString);

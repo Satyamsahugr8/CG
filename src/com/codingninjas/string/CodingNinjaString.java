@@ -7,6 +7,7 @@ public class CodingNinjaString {
 		
 		String str  = "abc";
 		
-		System.out.println(str.substring(1));
+		System.out.println(str.substring(1)); // bc
+		
 	}
 }
