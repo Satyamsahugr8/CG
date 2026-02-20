@@ -1,6 +1,6 @@
 package com.codingninjas.dynamicprograming;
 
-public class CountStepsTo1 {
+public class Q2CountStepsTo1 {
 
 	public static void main(String[] args) {
 		
@@ -14,6 +14,8 @@ public class CountStepsTo1 {
 	private static int countStepsDP(int n) {
 		
 		int storage[] = new int[n + 1];
+		
+		// setting as 0 as we are already at 1 dest.
 		storage[1] = 0;
 		
 		for (int i = 2; i <= n; i++) {
@@ -46,18 +48,18 @@ public class CountStepsTo1 {
 		int storage[] = new int[n + 1];
 		return countStepsM(n, storage);
 	}
+	
 	private static int countStepsM(int n, int[] storage) {
 		
-		if ( n == 1 ) {
+		if ( n == 1 ) { 
 			storage[n] = 0;
 			return storage[n];
 		}
-		
-		
+
 		if ( storage[n] != 0 ) {
 			return storage[n];
 		}
-		
+
 		// op1
 		int op1 = countStepsM(n - 1);
 		int minSteps = op1;

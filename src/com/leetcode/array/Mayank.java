@@ -12,10 +12,12 @@ public class Mayank {
 
 	public static void main(String[] args) {
 		Mayank instance = new Mayank();
-		System.out.println(instance);
+		System.out.println(instance.getClass().getName());
 	}
 
 	public Mayank() {
 
 	}
+
+	
 }

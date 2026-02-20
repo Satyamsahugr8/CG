@@ -3,7 +3,7 @@ package com.codingninjas.dynamicprograming;
 public class LootHouse {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		int arr[] = {10, 2, 30, 20, 3, 50};
 		int n = arr.length;
 		int ans =  maxiSumRobber(arr, 0, n - 1);

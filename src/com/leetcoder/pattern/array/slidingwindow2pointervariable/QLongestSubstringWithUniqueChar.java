@@ -1,4 +1,4 @@
-package com.leetcoder.pattern.array.slidingwindow2pointer.variable;
+package com.leetcoder.pattern.array.slidingwindow2pointervariable;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -18,7 +18,9 @@ public class QLongestSubstringWithUniqueChar {
 	public static void main(String[] args) {
 
 		
-		String s = "abcdefabcbb";
+		// String s = "abcdefabcghbb";
+        String s = "abcabcbb";
+        
 //		char [] arr = str.toCharArray();
 //		int n = arr.length;
 ////		int k = 3; // k unique char 
@@ -79,6 +81,7 @@ public class QLongestSubstringWithUniqueChar {
 //		System.out.println("ans : " + max);
 		
 		
+		// 2 pointer approach
 		
 		if (s.length() <= 1) {
 //            return s.length();

@@ -3,11 +3,11 @@ package com.codingninjas.dynamicprograming;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CountSquares {
+public class Q3CountSquares {
 	
 	public static void main(String[] args) {
 //		System.out.println((int)(Math.sqrt(3)));
-		int s = countSquareRootDP(104);
+		int s = countSquareRoot(10);
 		System.out.println(s);
 	}
 	
@@ -51,10 +51,6 @@ public class CountSquares {
 	
 	public static int countSquareRootM(int n, int[] storage) {
 		
-//		if ( n <= 0 ) {
-//			return 0;
-//		}
-		
 		if ( n == 0 || n == 1 || n == 2 || n == 3 ) {
 			storage[n] = 1;
 			return 1;
@@ -74,7 +70,6 @@ public class CountSquares {
 		return storage[n];
 	}
 	
-	
 	// recursion
 	public static int countSquareRoot(int n) {
 		
@@ -90,10 +85,9 @@ public class CountSquares {
 
 		for (int i = (int) Math.round(Math.sqrt(n)); i >= 1; i--) {
 			
-//			System.out.println(i);
 			if ( i*i > n ) {
 				continue;
-			} 
+			}
 			
 			if ( i*i == n ) {
 				return 1;
@@ -101,9 +95,7 @@ public class CountSquares {
 			
 			int ans2 = 1 + countSquareRoot(n - i);
 			minimum = Math.min(ans2, minimum);
-			
 		}
-		
 		
 		return minimum;
 	}

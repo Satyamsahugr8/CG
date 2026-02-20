@@ -1,4 +1,4 @@
-package com.leetcoder.pattern.array.slidingwindow2pointer.variable;
+package com.leetcoder.pattern.array.slidingwindow2pointervariable;
 
 import java.util.HashMap;
 import java.util.Map;

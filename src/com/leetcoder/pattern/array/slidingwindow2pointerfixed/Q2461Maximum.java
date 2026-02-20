@@ -1,4 +1,4 @@
-package com.leetcoder.pattern.array.slidingwindow2pointer;
+package com.leetcoder.pattern.array.slidingwindow2pointerfixed;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -36,7 +36,7 @@ public class Q2461Maximum {
 			else {
 				i++;
 				j = i + k;
-			}
+			} 
 			
 			if ( i == i + k ) {
 				

@@ -1,4 +1,4 @@
-package com.leetcoder.pattern.array.slidingwindow2pointer;
+package com.leetcoder.pattern.array.slidingwindow2pointerfixed;
 
 import java.util.ArrayList;
 import java.util.List;

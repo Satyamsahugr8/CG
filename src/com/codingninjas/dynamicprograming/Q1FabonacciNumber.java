@@ -1,25 +1,23 @@
 package com.codingninjas.dynamicprograming;
 
-public class FabonacciNumber {
+import java.util.Arrays;
+
+public class Q1FabonacciNumber {
 
 	public static void main(String[] args) {
 		
-		
-		System.out.println(fabDP(44));
-		System.out.println(fabM(44));
-		System.out.println(fab(44));
-		
-		
-		
+		int n = 3;
+		// System.out.println(fabDP(n));
+		System.out.println(fabM(n));
+		// System.out.println(fab(n));
 	}
 	
 	//1 normal 
 	public static int fab(int n) {
-		 if ( n == 0 || n == 1 ) {
+		if ( n == 0 || n == 1 ) {
 			 return n;
-		 }
-		 
-		 return fab(n-1) + fab(n-2);
+		}
+		return fab(n-1) + fab(n-2);
 	}
 	
 	//3 DP
@@ -32,22 +30,22 @@ public class FabonacciNumber {
 		for (int i = 2; i <= n; i++) {
 			storage[i] = storage[i-1] + storage[i-2];
 		}
-		 
-		 return storage[n];
+
+		return storage[n];
 	}
 
-	
-	
 	//2 memoization
 	public static int fabM(int n) {
 		 
 		int storage[] = new int[n+1];
 		int j = 0;
 		
+		// setting -1 value to each array element
 		for (int i : storage) {
 			storage[j] = -1;
 			j++;
 		}
+
 		return fabM(n, storage);
 	}
 
@@ -56,15 +54,14 @@ public class FabonacciNumber {
 		if ( n == 0 || n == 1 ) {
 			storage[n] = n;
 			return storage[n]; 
-		 }
+		}
 		
 		if ( storage[n] != -1 ) {
 			return storage[n];
 		}
 		
-		 storage[n] = fabM(n-1, storage) + fabM(n-2, storage);
-		 
-		 return storage[n];
+		storage[n] = fabM(n-1, storage) + fabM(n-2, storage);
+		return storage[n];
 	}
 
 	
