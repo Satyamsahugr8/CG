@@ -28,13 +28,13 @@ public class DetectCycle {
          while ( temp != null ) {	
              
         	 if (map.containsKey(temp)) {
-                 map.put(temp, map.get(temp) + 1);
-                 return true;
+                map.put(temp, map.get(temp) + 1);
+                return true;
              }
         	 
              else {
-                 map.put(temp, 1);
-                 temp = temp.next;
+                map.put(temp, 1);
+                temp = temp.next;
              }
         	 
          }
@@ -49,17 +49,15 @@ public class DetectCycle {
         ListNode slow = head;
         ListNode fast = head;
 
-        while( fast != null && fast.next != null ){
+        while( fast != null && fast.next != null ) {
             
             slow = slow.next;
             fast = fast.next.next;
             
-            if( slow == fast ){
+            if( slow == fast ) {
                 return true;
             }
-
         }
-
         return false;
     }
     

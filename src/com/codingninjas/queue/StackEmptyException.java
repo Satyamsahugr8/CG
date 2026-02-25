@@ -1,5 +1,5 @@
 
-package com.codingninjas.trees;
+package com.codingninjas.queue;
 
 public class StackEmptyException extends Exception {
 

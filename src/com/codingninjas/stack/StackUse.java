@@ -11,7 +11,7 @@ public class StackUse {
 
 //		stackUsingArray();
 //		stackUsingLL();
-//		System.out.println(balanceOutParenthesis("{()}"));
+		System.out.println(balanceOutParenthesis("{()}"));
 		reverseStackProblem();
 		
 //		bracketRedundantProblem2();

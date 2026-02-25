@@ -339,6 +339,24 @@ public class BinaryTreeUse {
 		BinaryTreeNode<Integer> resut = takeInputLevelWiseString(s);
 		printLevelWiseBest(resut);
 	}
+
+
+	public int sumRootToLeaf(TreeNode root, int val) {
+		//your code goes here
+
+		// if root is null return 0
+		if ( root == null  ) {
+			return 0;
+		}
+
+		val = (2 * val) + 2^0 * root.val;
+
+		if ( root.left == null && root.right == null ) {
+			return val;
+		}
+
+        return sumRootToLeaf(root.left, val) + sumRootToLeaf(root.right, val);
+    }
 	
 	
 	public static String serialize(BinaryTreeNode<Integer> root) {
@@ -1853,6 +1871,7 @@ public class BinaryTreeUse {
 		
 		return root;
 	}
+	
 	public static BinaryTreeNode<Integer> removeLeafNode(BinaryTreeNode<Integer> root){
 		
 		if ( root == null ) {

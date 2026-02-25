@@ -104,6 +104,7 @@ public class LinkedClassUse {
 		Node<Integer> tail  = null;
 
 		while (data != -1) {
+			
 			Node<Integer> currentNode = new Node<>(data);
 
 			if (head == null) {
@@ -292,7 +293,8 @@ public class LinkedClassUse {
 	}
 
 	public static Node<Integer> deleteTail(Node<Integer> head) {
-		return delete(head, 0);
+		int length = count(head);
+		return delete(head, length - 1);
 	}
 	
 	public static void printRecursively(Node<Integer> head) {
@@ -302,7 +304,7 @@ public class LinkedClassUse {
 			return;
 		}
 		
-		System.out.print(head.data + " ");
+		System.out.print(head.data + " -> ");
 		printRecursively(head.next);
 	}
 
@@ -532,7 +534,6 @@ public class LinkedClassUse {
 			dummy.next = node;
 			dummy = dummy.next;
 			head = head.next;
-
 		}
 
 		while (head2 != null && dummy != null) {
@@ -547,6 +548,7 @@ public class LinkedClassUse {
 			dummy.next = node;
 			dummy = dummy.next;
 		}
+
 		return node2.next;
 	}
 
@@ -584,7 +586,6 @@ public class LinkedClassUse {
 		}
 
 		currentNode.next = currentNode.next.next;
-
 		return head;
 	}
 
@@ -1115,8 +1116,9 @@ public class LinkedClassUse {
 		
 		
 		
-		Node<Integer> head = takeInput();
-		System.out.println("head");
+		// Node<Integer> head = takeInput();
+		Node<Integer> head = createLinkedList();
+		System.out.print("head = ");
 		printRecursively(head);
 		
 		System.out.println();
@@ -1173,8 +1175,8 @@ public class LinkedClassUse {
 //		printRecursively(ansRev);
 		
 		
-		Node<Integer> ans = rotateRight(head, 2);
-		printRecursively(ans);
+		// Node<Integer> ans = rotateRight(head, 2);
+		// printRecursively(ans);
 	}
 	
 	public static Node<Integer> reverseLinkedList(Node<Integer> head) {

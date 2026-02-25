@@ -2,6 +2,8 @@ package com.codingninjas.trees;
 
 import java.util.Scanner;
 
+import com.codingninjas.queue.QueueUsingLL;
+
 @SuppressWarnings({"resource", "unused"})
 public class TreeUse {
 
@@ -10,36 +12,36 @@ public class TreeUse {
 //		buildTree();
 		
 		// 4 2 3 2 2 0 1 0 5 1 3 0
-//		Scanner sc = new Scanner(System.in);
-//		TreeNode<Integer> root = takeInputRecursively(sc);
-//		print(root);
-//		printRecursiveImproved(root);
+		Scanner sc = new Scanner(System.in);
+		TreeNode<Integer> root = takeInputRecursively(sc);
+		print(root);
+		printRecursiveImproved(root);
 		
 		// 1 2 2 3 2 4 5 1 6 0 0 0
-		TreeNode<Integer> root = takeInputLevelVise();
-		printRecursiveImproved(root);
-//		System.out.println(numOfNodes(root));
-//		System.out.println(largestNode(root));
-//		System.out.println(findHeight(root));
-//		printKDepthNode(root, 2);
+		TreeNode<Integer> root2 = takeInputLevelVise();
+		printRecursiveImproved(root2);
+		System.out.println(numOfNodes(root2));
+		System.out.println(largestNode(root2));
+		System.out.println(findHeight(root2));
+		printKDepthNode(root2, 2);
 		System.out.println();
-		System.out.println("countLeaf : "+ countNoOfLeaf(root));
+		System.out.println("countLeaf : "+ countNoOfLeaf(root2));
 		
 		// print with level-wise
 		System.out.println("Print-levelwise");
-		printLevelwise(root, 0);
+		printLevelwise(root2, 0);
 		
 		System.out.println();
 		
 		// print pre-order
 		System.out.println("Pre-order");
-		preOrder(root);
+		preOrder(root2);
 		
 		System.out.println();
 		
 		// print post-order
 		System.out.println("Post-order");
-		postOrder(root);
+		postOrder(root2);
 		
 		System.out.println();
 		
@@ -232,6 +234,7 @@ public class TreeUse {
 		for (int i = 0; i < root.children.size(); i++) {
 			count += numOfNodes(root.children.get(i));
 		}
+		
 		return count;
 	}
 	

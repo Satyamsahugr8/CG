@@ -55,11 +55,11 @@ public class BTUseSolution {
 		System.out.print(root.val + ": ");
 		
 		if ( root.left != null ) {
-			System.out.print( "L"+root.left.val + ",");
+			System.out.print( "L:"+root.left.val + ",");
 		}
 		
 		if ( root.right != null ) {
-			System.out.print( "R"+ root.right.val + ",");
+			System.out.print( "R:"+ root.right.val + ",");
 		}
 		
 		System.out.println();
