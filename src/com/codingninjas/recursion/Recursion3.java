@@ -176,11 +176,12 @@ public class Recursion3 {
 		printAllCodes("1123", "");
 
 		System.out.println();
+		
 		// permutation
 		System.out.println("String permutation : ");
 		String st = "adg";
-//		String[] outtt = returnPermutation(st);
-		List<String> outtt = returnPermutationList("abc");
+		String[] outtt = returnPermutation(st);
+		List<String> outt = returnPermutationList("adg");
 		for (String is2 : outtt) {
 			System.out.println(is2 + " ");
 		}
@@ -265,21 +266,6 @@ public class Recursion3 {
 		char firstChar = str.charAt(0);
 
 		int t = 0;
-
-//		for (int i = 0; i < small.length; i++) {
-//			answer[t] = firstChar + small[i];
-//			t++;
-//		}
-//		
-//		for (int i = 0; i < small.length; i++) {
-//			answer[t] = small[i] + firstChar + small[i];
-//			t++;
-//		}
-//		
-//		for (int i = 0; i < small.length; i++) {
-//			answer[t] = small[i] + firstChar;
-//			t++;
-//		}
 
 		for (int i = 0; i < small.length; i++) {
 			String currentString = small[i];

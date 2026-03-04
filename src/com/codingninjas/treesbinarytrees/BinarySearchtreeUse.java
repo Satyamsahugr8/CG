@@ -578,7 +578,7 @@ public class BinarySearchtreeUse {
 			return null;
 		}
 		
-		if ( j<i) {
+		if ( j<i ) {
 			return null;
 		}
 		

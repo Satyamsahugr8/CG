@@ -14,7 +14,7 @@ public class Recursion2 {
 		String str3 = "aaaa";
 		System.out.println(pairStarAdd(str3));
 		
-		// given input 3 and 3 tower 
+		// given input 3 and 3 tower
 		int n = 3;
 		int ans = towerOfHanoi(n, "S","A","D");
 		System.out.println("ans : "+ ans);
@@ -28,12 +28,14 @@ public class Recursion2 {
 			System.out.println(source + " -> " + destination);
 			return 1;
 		}
+
 		// call for small 
 		int small = towerOfHanoi(n - 1, source, destination, auxilary);
 		small++;
 		System.out.println(source + " -> " + destination);
 		int movesmalltofinall = towerOfHanoi(n - 1, auxilary, source, destination);
 		small += movesmalltofinall;
+
 		return small;
 	}
 
@@ -65,13 +67,12 @@ public class Recursion2 {
 		
 		int output = 0;
 		
-		//base 
-		if 
-		(str.length() <= 0) {
+		//base case
+		if (str.length() <= 0) {
 			return 0;
 		}
 		
-		if(str.length() == 1) {
+		if (str.length() == 1) {
 			return Integer.valueOf(str);
 		}
 		
@@ -103,6 +104,5 @@ public class Recursion2 {
 		
 		return output;
 	}
-	
 	
 }

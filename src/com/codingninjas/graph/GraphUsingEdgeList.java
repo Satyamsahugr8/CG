@@ -16,9 +16,6 @@ class Pair<T, Y> {
 }
 
 public class GraphUsingEdgeList {
-	
 	ArrayList<Integer> vertices = new ArrayList<>();
 	ArrayList<Pair<Integer, Integer>> edges = new ArrayList<>();
-	
-
 }

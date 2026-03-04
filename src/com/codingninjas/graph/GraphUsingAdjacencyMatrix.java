@@ -1,6 +1,7 @@
 package com.codingninjas.graph;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -24,35 +25,35 @@ public class GraphUsingAdjacencyMatrix<T> {
 		int adjMatrix[][] = inputGraph();
 		
 		//dfs
-		// System.out.print("dfs : ");
-		// depthFirstSearch(adjMatrix);
-//		
-//		//bfs
-//		System.out.print("bfs : ");
-//		birthFirstSearch(adjMatrix);
-//		
-//		//hasPath return ArrayList
-//		System.out.print("hasPathDFS : ");
-//		boolean[] visited = new boolean[adjMatrix.length];
-//		ArrayList<Integer> arrList = hasPath(adjMatrix, 0, 6, visited);
-//		System.out.println(arrList);
-//		
-//		//hasPath return hasPath2
-//		System.out.print("hasPathBFS : ");
-//		boolean[] visited2 = new boolean[adjMatrix.length];
-//		ArrayList<Integer> arrList2 = hasPath2(adjMatrix, 0, 6, visited2);
-//		System.out.println(arrList2);
+		System.out.print("dfs : ");
+		depthFirstSearch(adjMatrix);
 		
-		// int adjMatrix[][] = inputGraphWithWeight();
-		// primalgorithm(adjMatrix);
+		//bfs
+		System.out.print("bfs : ");
+		birthFirstSearch(adjMatrix);
 		
-		// int cycles = cyclesInGraph(adjMatrix);
-		// System.out.println(cycles/6);
-		System.out.println(cycleDetection(adjMatrix));
+		//hasPath return ArrayList
+		System.out.print("hasPathDFS : ");
+		boolean[] visited = new boolean[adjMatrix.length];
+		ArrayList<Integer> arrList = hasPath(adjMatrix, 0, 6, visited);
+		System.out.println(arrList);
+		
+		// hasPath return hasPath2
+		System.out.print("hasPathBFS : ");
+		boolean[] visited2 = new boolean[adjMatrix.length];
+		ArrayList<Integer> arrList2 = hasPath(adjMatrix, 0, 6, visited2);
+		System.out.println(arrList2);
+		
+		int adjMatrix2[][] = inputGraphWithWeight();
+		primAlgorithm(adjMatrix2);
+		
+		int cycles = cyclesInGraph(adjMatrix2);
+		System.out.println(cycles/6);
+		System.out.println(cycleDetection(adjMatrix2));
 		
 	}
 
-	static boolean cycleDetection(int[][] adjMatrix) {
+	public static boolean cycleDetection(int[][] adjMatrix) {
 
 		for (int i = 0; i < adjMatrix.length; i++) {
 			for (int j = 0; j < adjMatrix[i].length; j++) {
@@ -66,7 +67,6 @@ public class GraphUsingAdjacencyMatrix<T> {
 				}
 			}
 		}
-
 		return false;
 	}
 
@@ -182,14 +182,12 @@ public class GraphUsingAdjacencyMatrix<T> {
 		return arrList;
 	}
 	
-	
 	// hasPath BFS
-	private static ArrayList<Integer> hasPath2(int[][] adjMatrix, int source, int destination, boolean[] visited) {
+	private static ArrayList<Integer> hasPathh(int[][] adjMatrix, int source, int destination, boolean[] visited) {
 		
 		Queue<Integer> pendingQueue = new LinkedList<Integer>();
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-		ArrayList<Integer> arrList = new ArrayList<Integer>();
-		
+		ArrayList<Integer> arrList = new ArrayList<Integer>(); 
 		
 		visited[source] = true;
 		pendingQueue.add(source);
@@ -197,37 +195,31 @@ public class GraphUsingAdjacencyMatrix<T> {
 		while ( !pendingQueue.isEmpty() ) {
 			
 			int element = pendingQueue.poll();
-//			System.out.print(element + " ");
 			
 			for (int j = 0; j < adjMatrix.length; j++) {
-				
 				if ( adjMatrix[element][j] == 1 && visited[j] == false ) {
-			
 					visited[j] = true;
 					pendingQueue.add(j);
 					map.put(j, element);
 					
 					if ( j == destination ) {
-					
+						
+						// logic to find path from source to destination using map
 						int temp = j;
 						while ( temp != 0 ) {
 							arrList.add(temp);
 							temp = map.get(temp);
 						}
-						
+
 						arrList.add(0);
-						
 						return arrList;
 					}
-					
-				}
-				
+				}	
 			}
 			
 		}
 		
 		return null;
-		
 	}
 	
 	public static int[][] inputGraphWithWeight() {
@@ -288,9 +280,8 @@ public class GraphUsingAdjacencyMatrix<T> {
 	}
 	
 	//DFS
-	
-	//DFS
 	public static void depthFirstSearch(int[][] adjMatrix) {
+		
 		boolean[] visited = new boolean[adjMatrix.length];
 		
 		int count = 0;
@@ -305,11 +296,11 @@ public class GraphUsingAdjacencyMatrix<T> {
 		System.out.println(count);
 		
 	}
+
 	private static void depthFirstSearch(int[][] adjMatrix, int currVertice, boolean[] visited) {
 		
-		visited[currVertice] = true;
-		
 		System.out.print(currVertice + " ");
+		visited[currVertice] = true;
 		
 		for (int j = 0; j < adjMatrix.length; j++) {
 			if ( adjMatrix[currVertice][j] == 1 && visited[j] == false ) {
@@ -319,7 +310,6 @@ public class GraphUsingAdjacencyMatrix<T> {
 		
 	}
 	
-
 	//BFS
 	public static void birthFirstSearch(int[][] adjMatrix) {
 		boolean[] visited = new boolean[adjMatrix.length];
@@ -333,27 +323,21 @@ public class GraphUsingAdjacencyMatrix<T> {
 	}
 
 	private static void breadthFirstSearch(int[][] adjMatrix, int i, boolean[] visited) {
-		
 		Queue<Integer> pendingQueue = new LinkedList<Integer>();
 		visited[i] = true;
 		pendingQueue.add(i);
 		
 		while ( !pendingQueue.isEmpty() ) {
-			
 			int element = pendingQueue.poll();
 			System.out.print(element + " ");
 			
-			for (int j = 0; j < adjMatrix.length; j++) {
-				
+			for (int j = 0; j < adjMatrix.length; j++) {	
 				if ( adjMatrix[element][j] == 1 && visited[j] == false ) {
 					visited[j] = true;
 					pendingQueue.add(j);
 				}
 			}
-			
-			
 		}
-		
 	}
 	
 }

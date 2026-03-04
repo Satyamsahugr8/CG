@@ -349,7 +349,7 @@ public class BinaryTreeUse {
 			return 0;
 		}
 
-		val = (2 * val) + 2^0 * root.val;
+		val = (2 * val) + 1 * root.val;
 
 		if ( root.left == null && root.right == null ) {
 			return val;
@@ -1814,8 +1814,10 @@ public class BinaryTreeUse {
 
 	public static BalancedTreeReturn isBalancedBetter(BinaryTreeNode<Integer> root) {
 		
-		if ( root == null ) return new BalancedTreeReturn(0, true);
-
+		if ( root == null ) {
+			return new BalancedTreeReturn(0, true);
+		}
+		
 		BalancedTreeReturn leftBal = isBalancedBetter(root.left);
 		BalancedTreeReturn rightBal = isBalancedBetter(root.right);
 		
@@ -1984,6 +1986,7 @@ public class BinaryTreeUse {
 		}
 
 	}
+
 	public static int heightOftheBinaryTree(BinaryTreeNode<Integer> root){
 		
 		if ( root == null ) {
@@ -1992,12 +1995,11 @@ public class BinaryTreeUse {
 		
 		// initially if root is present that means height = 1;
 		int maximumHeight = 0;
-		
+
 		if ( root.left != null )  {
 			int leftHeight = heightOftheBinaryTree(root.left);
 			maximumHeight = leftHeight;
 		}
-		
 		if ( root.right != null ) {
 			int rightHeight = heightOftheBinaryTree(root.right);
 			if ( maximumHeight < rightHeight ) {
@@ -2016,7 +2018,6 @@ public class BinaryTreeUse {
 		
 		int largestNode = root.data;
 		
-		 
 		if ( root.left != null )  {
 			int leftLargest = nodeWithLargestData(root.left);
 			if ( leftLargest > largestNode ) {
@@ -2055,11 +2056,11 @@ public class BinaryTreeUse {
 		System.out.print(root.data + ": ");
 		
 		if ( root.left != null ) {
-			System.out.print( "L"+root.left.data + ",");
+			System.out.print( "L:"+root.left.data + ",");
 		}
 		
 		if ( root.right != null ) {
-			System.out.print( "R"+ root.right.data + ",");
+			System.out.print( "R:"+ root.right.data + ",");
 		}
 		
 		System.out.println();

@@ -8,15 +8,16 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Edge implements Comparable<Edge>{
+class Edge implements Comparable<Edge> {
+	
 	int source;
 	int neighbor;
 	int weight;
 	
-	public Edge(int source, int neigbhor, int weight) {
+	public Edge(int source, int neighbor, int weight) {
 		super();
 		this.source = source;
-		this.neighbor = neigbhor;
+		this.neighbor = neighbor;
 		this.weight = weight;
 	}
 
@@ -24,8 +25,6 @@ class Edge implements Comparable<Edge>{
 	public int compareTo(Edge o) {
 		return this.weight - o.weight;
 	}
-	
-	
 
 }
 
@@ -34,24 +33,30 @@ public class GraphUsingAdjacencyList {
 	public static void main(String[] args) throws Exception {
 		
 		//input
-//		ArrayList<Edge>[] graph = getInput();
-//		
-//		//hasPath
-//		boolean dd = hasPath(graph);
-//		System.out.println(dd);
-//		
-//		//dfs
-//		System.out.print("DFS : ");
-//		depthFirstSearch(graph);
-//		
-//		System.out.println();
-//		
-//		//bfs
-//		System.out.print("BFS : ");
-//		birthFirstSearch(graph);
+		ArrayList<Edge>[] graph = getInput();
 		
-		//krushal's Algorithm
-//		krushalsAlgo();
+		//hasPath
+		// boolean dd = hasPath(graph);
+		// System.out.println(dd);
+		
+		//dfs
+		System.out.print("DFS : ");
+		depthFirstSearch(graph);
+		
+		System.out.println();
+		
+		// bfs
+		System.out.print("BFS : ");
+		birthFirstSearch(graph);
+		
+		// krushal's Algorithm
+		// krushalsAlgo();
+
+		// hasPath return ArrayList
+		System.out.print("hasPathDFS : ");
+		boolean[] visited = new boolean[graph.length];
+		boolean hasPath = hasPath(graph, 0, 6, visited);
+		System.out.println(hasPath);
 		
 		
 	}
@@ -105,7 +110,6 @@ public class GraphUsingAdjacencyList {
 		
 	}
 	
-	
 	public static Edge[] krushalAlgorithm(Edge[] edges, int n) {
 		
 		Edge[] mst = new Edge[n-1];
@@ -122,9 +126,8 @@ public class GraphUsingAdjacencyList {
 			Edge currentEdge = edges[i++];
 			int v1Parent = findParent(currentEdge.source, parent);
 			int v2Parent = findParent(currentEdge.neighbor, parent);
-			
 			if ( v1Parent != v2Parent ) {
-				// includ
+				// include
 				mst[count] = currentEdge;
 				count++;
 				parent[v1Parent] = parent[v2Parent];
@@ -180,6 +183,7 @@ public class GraphUsingAdjacencyList {
 		depthFirstSearch(graph, 0, visited);
 		
 	}
+	
 	private static void depthFirstSearch(ArrayList<Edge>[] graph, int i, boolean[] visited) {
 		
 		visited[i] = true;
@@ -192,7 +196,6 @@ public class GraphUsingAdjacencyList {
 		}
 		
 	}
-
 
 	public static boolean hasPath(ArrayList<Edge>[] graph) throws Exception {
 		
@@ -224,6 +227,7 @@ public class GraphUsingAdjacencyList {
 		return hasPath(graph, source, destination, visited);
 	}
 	
+	// using BFS
 	private static boolean hasPath(ArrayList<Edge>[] graph, int source, int destination, boolean[] visited) {
 		
 		if ( source == destination ) {
@@ -241,14 +245,16 @@ public class GraphUsingAdjacencyList {
 				}
 			}
 		}
+		
 		return false;
 	}
 	
 	public static ArrayList<Edge>[] getInput() {
 		
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Number of Vertices : ");
 		int vertices = sc.nextInt();
-//				Integer.parseInt(br.readLine());
+		// Integer.parseInt(br.readLine());
 		
 		@SuppressWarnings("unchecked")
 		ArrayList<Edge>[] graph = new ArrayList[vertices];
@@ -256,10 +262,11 @@ public class GraphUsingAdjacencyList {
 			graph[i] = new ArrayList<>();
 		}
 		
+		System.out.println("Enter Number of Edges : ");
 		int edges = sc.nextInt();
 		
 		for (int i = 0; i < edges; i++) {
-//			String[] parts = br.readLine().split(" ");
+			// String[] parts = br.readLine().split(" ");
 			int v1 = sc.nextInt();
 			int v2 = sc.nextInt();
 			int wt = sc.nextInt();
@@ -290,7 +297,7 @@ public class GraphUsingAdjacencyList {
 			int v2 = Integer.parseInt(parts[1]);
 			int wt = Integer.parseInt(parts[2]);
 			graph[v1].add(new Edge(v1,v2,wt));
-			graph[v2].add(new Edge(v1,v2,wt));
+			graph[v2].add(new Edge(v2,v1,wt));
 		}
 		
 		return graph;
