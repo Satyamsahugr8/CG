@@ -34,6 +34,30 @@ public class HashingUsingMap {
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {    
         	System.out.println(entry.getKey() + " " + entry.getValue());
         }
+
+        // more ways to traverse through map
+        for ( Integer key : map.keySet()) {
+        	System.out.println(key + " " + map.get(key));
+        }
+
+        // more ways to traverse through map
+        for ( Map.Entry<Integer, Integer> entry : map.entrySet()) {
+        	System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+
+        // more ways to traverse through map
+        map.forEach((key, value) -> System.out.println(key + " " + value));
+
+        // Iterable
+        Iterable<Map.Entry<Integer, Integer>> iterable = map.entrySet();
+        for ( Map.Entry<Integer, Integer> entry : iterable) {
+        	System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+
+        // use of map.putIfAbsent(null, null);
+        map.putIfAbsent(20, 5);
+        System.out.println(map.get(20));
+
     }
  
     

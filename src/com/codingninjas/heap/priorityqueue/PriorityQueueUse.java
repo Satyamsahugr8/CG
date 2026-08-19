@@ -1,10 +1,9 @@
-package com.codingninjas.queue.priorityqueue;
+package com.codingninjas.heap.priorityqueue;
 
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
-
 
 class MaxPQComparator implements Comparator<Integer> {
 
@@ -27,6 +26,7 @@ class MinPQComparator implements Comparator<Integer> {
     }
     
 }
+
 @SuppressWarnings("unused")
 public class PriorityQueueUse {
 
@@ -34,7 +34,7 @@ public class PriorityQueueUse {
 
         // priority_Queue2MinUse();
         // priority_Queue2MaxUse();
-        // inbuiltPriorityQueueUse();
+        inbuiltPriorityQueueUse();
         // sortKSorted();
         // kLargestElement();
 //         inbuiltMaxPriorityQueueUse();
@@ -47,21 +47,23 @@ public class PriorityQueueUse {
 //    	System.out.println(ss);
     	
     	int[] aar = {999999999,999999999,999999999};
-//    	int a = buyTicket(aar, aar.length, 3);
-//    	System.out.println(a);
+        int a = buyTicket(aar, aar.length, 3);
+        System.out.println(a);
     	
-//    	minPriorityQueue(arr);
+   	    // minPriorityQueue(arr);
 
     	int n = minOperations(aar, 1000000000);
     	System.out.println(n);
     }
     
-    
+
     private static int buyTicket(int[] aar, int n, int k) throws PriorityQueueException {
 		
     	Queue<Integer> queue = new LinkedList<Integer>();
     	MinPQComparator min = new MinPQComparator();
-        PriorityQueue<Integer> pQueue = new PriorityQueue<>(min);
+        // PriorityQueue<Integer> pQueue = new PriorityQueue<>(min);
+
+        PriorityQueue<Integer> pQueue = new PriorityQueue<>();
 
         for (int i = 0; i < aar.length; i++) {
             pQueue.add(aar[i]);
@@ -90,15 +92,11 @@ public class PriorityQueueUse {
     				tempk = queue.size() - 1;
     			}
     		}
-    		
-    		
+    			
 		}
     	
     	return count;
-    	
-		
 	}
-
 
 	public static int findKthLargest(int[] nums, int k) {
         
@@ -127,7 +125,6 @@ public class PriorityQueueUse {
         return pQueue.remove();
 
     }
-
 
 	private static boolean checkMax(int[] arr) {
 		
@@ -450,6 +447,7 @@ public class PriorityQueueUse {
         while (!pQueue.isEmpty()) {
             System.out.print(pQueue.remove() + " ");
         }
+        
         System.out.println();
     
     }

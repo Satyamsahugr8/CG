@@ -1,8 +1,9 @@
-package com.codingninjas.queue.priorityqueue;
+package com.codingninjas.heap.priorityqueue;
 
 import java.util.ArrayList;
 
 class Element<T> {
+    
     T value;
     int periority;
     
@@ -96,10 +97,11 @@ public class Priority_Queue<T> {
             heap.set(parentIndex,heap.get(minIndex));
             heap.set(minIndex,temp);
             
-            parentIndex=minIndex;
-            leftChildIndex=2*parentIndex+1;
-            rightChildIndex=2*parentIndex+2;
+            parentIndex = minIndex;
+            leftChildIndex = 2*parentIndex+1;
+            rightChildIndex = 2*parentIndex+2;
         }
+        
         return minEle;
     }
 

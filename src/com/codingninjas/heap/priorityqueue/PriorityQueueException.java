@@ -1,4 +1,4 @@
-package com.codingninjas.queue.priorityqueue;
+package com.codingninjas.heap.priorityqueue;
 
 public class PriorityQueueException extends Exception {
     
